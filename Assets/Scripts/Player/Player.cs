@@ -6,11 +6,12 @@ public class Player : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
-    PlayerInteraction playerInteraction;
+    [SerializeField] PlayerInteraction playerInteraction;
 
     private void Update()
     {
         playerMovement.Move();
         playerLook.Look();
+        playerInteraction.LookForInteraction();
     }
 }
