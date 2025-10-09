@@ -1,16 +1,44 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+[System.Serializable]
+public class PlayerMovement
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float gravityMultiplier = 1f;
+    [SerializeField] private InputActionReference moveAction; // Link this in Inspector (Vector2)
+
+    private Vector3 velocity;
+
+    public void Move()
     {
-        
+        if (moveAction == null || controller == null)
+            return;
+
+        Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
+        Vector3 input = new Vector3(moveInput.x, 0, moveInput.y);
+
+        if (input.sqrMagnitude > 0.01f)
+        {
+            Vector3 move = controller.transform.TransformDirection(input.normalized) * speed * Time.deltaTime;
+            controller.Move(move);
+        }
+
+        ApplyGravity();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ApplyGravity()
     {
-        
+        if (!controller.isGrounded)
+        {
+            velocity += Physics.gravity * gravityMultiplier * Time.deltaTime;
+        }
+        else if (velocity.y < 0)
+        {
+            velocity.y = -2f; // small push down to keep grounded
+        }
+
+        controller.Move(velocity * Time.deltaTime);
     }
 }

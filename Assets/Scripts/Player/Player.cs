@@ -1,16 +1,15 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] PlayerMovement playerMovement;
+    PlayerLook playerLook;
+    PlayerInteraction playerInteraction;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        playerMovement.Move();
     }
 }
