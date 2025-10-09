@@ -7,7 +7,7 @@ public class PlayerMovement
     [SerializeField] private CharacterController controller;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float gravityMultiplier = 1f;
-    [SerializeField] private InputActionReference moveAction; // Link this in Inspector (Vector2)
+    [SerializeField] private InputActionReference moveAction;
 
     private Vector3 velocity;
 
