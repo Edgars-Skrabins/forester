@@ -670,6 +670,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3cf40c28b618e2e4683ae154c77c0edb, type: 2}
+    - target: {fileID: 3376922736664311214, guid: 96295ac70660c07488b9c634c024ebb8, type: 3}
+      propertyPath: m_Name
+      value: ElevatorButtons_low.008
+      objectReference: {fileID: 0}
     - target: {fileID: 4590422632114159357, guid: 96295ac70660c07488b9c634c024ebb8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
