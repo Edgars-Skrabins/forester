@@ -40,6 +40,9 @@ public class PlayerInteraction
 
                 return;
             }
+        } else if(currentInteractableObject != null)
+        {
+            DisableUnfocusedOutline(null);
         }
 
         if (currentTarget != null)
