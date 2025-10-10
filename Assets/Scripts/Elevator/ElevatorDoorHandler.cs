@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class ElevatorDoorHandler : MonoBehaviour
@@ -22,52 +22,34 @@ public class ElevatorDoorHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            OpenDoors();
+            OpenDoors(0f);
         }
         
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CloseDoors();
+            CloseDoors(0f);
         }
     }
     
-    public void OpenDoors()
+    public void OpenDoors(float delay)
     {
-        StartCoroutine(CO_OpenDoors());
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 1.35f, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
+
+        sequence.Play();
     }
     
-    public void CloseDoors()
+    public void CloseDoors(float delay)
     {
-        StartCoroutine(CO_CloseDoors());
-    }
+        Sequence sequence = DOTween.Sequence();
 
-    IEnumerator CO_OpenDoors()
-    {
-        float progress = 0;
-
-        while (progress < 1)
-        {
-            progress += Time.deltaTime;
-
-            m_door1.localPosition = Vector3.Lerp(m_door1StartPos, m_door1EndPos, progress);
-            m_door2.localPosition = Vector3.Lerp(m_door2StartPos, m_door2EndPos, progress);
-            
-            yield return null;
-        }
-    }
-
-    IEnumerator CO_CloseDoors()
-    {
-        float progress = 0;
-
-        while (progress < 1)
-        {
-            progress += Time.deltaTime;
-
-            m_door1.localPosition = Vector3.Lerp(m_door1EndPos, m_door1StartPos, progress);
-            m_door2.localPosition = Vector3.Lerp(m_door2EndPos, m_door2StartPos, progress);
-            
-            yield return null;
-        }
+        sequence.Insert(delay + 0f, m_door1.DOLocalMove(m_door1StartPos, 1.2f).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 0.2f, m_door2.DOLocalMove(m_door2StartPos, 1.3f).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 1.45f, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
+        
+        sequence.Play();
     }
 }

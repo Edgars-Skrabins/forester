@@ -1090,38 +1090,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator
       objectReference: {fileID: 0}
-    - target: {fileID: 5364590125608080968, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825943638808125641, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_door1EndPos.x
-      value: 0.416
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825943638808125641, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_door1EndPos.y
-      value: 1.0014822
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825943638808125641, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_door2EndPos.x
-      value: 0.091
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825943638808125641, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_door2EndPos.y
-      value: 0.02930224
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825943638808125641, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_door2EndPos.z
-      value: -0.9586498
-      objectReference: {fileID: 0}
-    - target: {fileID: 8722698110578855096, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8942279039827537842, guid: 744ba02bb3ab1334c9f551862e084cff, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
