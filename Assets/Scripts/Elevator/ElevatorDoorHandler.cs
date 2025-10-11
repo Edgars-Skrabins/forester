@@ -35,10 +35,11 @@ public class ElevatorDoorHandler : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f).SetEase(Ease.InCubic));
-        sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f).SetEase(Ease.InCubic));
-        sequence.Insert(delay + 1.35f, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
-
+        sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f*2).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f*2).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 1.35f*2, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
+// Sound 0.04s
+        AudioManager.Instance.PlaySound("SFX_Elevator_Door_Open",transform.position);
         sequence.Play();
     }
     
@@ -46,10 +47,11 @@ public class ElevatorDoorHandler : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Insert(delay + 0f, m_door1.DOLocalMove(m_door1StartPos, 1.2f).SetEase(Ease.InCubic));
-        sequence.Insert(delay + 0.2f, m_door2.DOLocalMove(m_door2StartPos, 1.3f).SetEase(Ease.InCubic));
-        sequence.Insert(delay + 1.45f, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
+        sequence.Insert(delay + 0f, m_door1.DOLocalMove(m_door1StartPos, 1.2f*2).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 0.2f, m_door2.DOLocalMove(m_door2StartPos, 1.3f*2).SetEase(Ease.InCubic));
+        sequence.Insert(delay + 1.45f*2, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
         
+        AudioManager.Instance.PlaySound("SFX_Elevator_Door_Close",transform.position);
         sequence.Play();
     }
 }

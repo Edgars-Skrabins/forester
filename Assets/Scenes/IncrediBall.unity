@@ -200,7 +200,7 @@ MonoBehaviour:
   playerFlashlight:
     flashlightLight: {fileID: 1774752471}
     toggleAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    maxBattery: 100
+    maxBattery: 670.6
     drainRate: 2
     lowBatteryThreshold: 15
     flickerIntensity: 0.2
@@ -2472,6 +2472,24 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     poolSize: 2
+  - name: SFX_Elevator_Door_Close
+    audioClip: {fileID: 8300000, guid: 1847b3f7ec68335478b60f21071b6b07, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Door_Open
+    audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
 --- !u!4 &1008861193
 Transform:
   m_ObjectHideFlags: 0
@@ -3061,11 +3079,11 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 1, g: 0.9191379, b: 0.53396225, a: 1}
-  m_Intensity: 5
-  m_Range: 250
-  m_SpotAngle: 88.104324
-  m_InnerSpotAngle: 45.599133
+  m_Color: {r: 1, g: 0.98762363, b: 0.87358487, a: 1}
+  m_Intensity: 962.9
+  m_Range: 414.6
+  m_SpotAngle: 88.10434
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -3093,7 +3111,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 7f117a260dc98f142ad3086891d2f7c1, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -3211,7 +3229,7 @@ MonoBehaviour:
   minFlickerInterval: 0.05
   maxFlickerInterval: 0.2
   buzzAudio: {fileID: 1811106703}
-  buzzVolume: 0.5
+  buzzVolume: 0.101
   buzzPitchVariance: 0.05
   useDoTween: 1
   tweenDuration: 0.05
@@ -3229,7 +3247,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 20511d8c5412ed24cb09d1104ff5f4e2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0
