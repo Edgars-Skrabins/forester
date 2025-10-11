@@ -50,6 +50,7 @@ public class PlayerInteraction
             currentTarget = null;
         }
     }
+    
     private void DisableUnfocusedOutline(GameObject newFocus)
     {
         if(currentInteractableObject != null)
