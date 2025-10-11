@@ -2490,6 +2490,24 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     poolSize: 2
+  - name: SFX_Flashlight_On
+    audioClip: {fileID: 8300000, guid: 44fc51d7dada2324f972036518035eb5, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Flashlight_Off
+    audioClip: {fileID: 8300000, guid: dd4342a3ca734d345a93b0ce180033a9, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
 --- !u!4 &1008861193
 Transform:
   m_ObjectHideFlags: 0

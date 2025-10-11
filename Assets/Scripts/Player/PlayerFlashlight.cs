@@ -69,8 +69,7 @@ public class PlayerFlashlight
         isOn = true;
         flashlightLight.enabled = true;
 
-        // Optional: Play click sound here using AudioManager if you want
-        // AudioManager.Instance.PlaySFX("FlashlightOn");
+        AudioManager.Instance.PlaySound("SFX_Flashlight_On");
     }
 
     private void TurnOff()
@@ -84,8 +83,7 @@ public class PlayerFlashlight
             flickerRoutine = null;
         }
 
-        // Optional: Play off sound
-        // AudioManager.Instance.PlaySFX("FlashlightOff");
+        AudioManager.Instance.PlaySound("SFX_Flashlight_Off");
     }
 
     private IEnumerator FlickerEffect()
