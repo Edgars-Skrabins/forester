@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
@@ -59,21 +60,26 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         ElevatorButtonPressed = null;
     }
 
-    public void LeaveFloor(int nextFloorIndex)
+    public IEnumerator LeaveFloor(int nextFloorIndex)
     {
         m_door.CloseDoors(0f);
         //Intermission elevator music
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
-        //Enter next scene / floor
-        while(SceneManager.loadedSceneCount < 2 && Time.time < 60f)
-        { Debug.Log(Time.time); }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_currentTargetFloorSceneName));
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
+        asyncLoad.allowSceneActivation = true;
+        
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        
         SceneManager.UnloadSceneAsync(scene);
+        
         m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
         m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
         m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
         m_door.OpenDoors(0f);
+        
         LeavingFloor?.Invoke();
     }
 
@@ -149,7 +155,7 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
             case "LeaveFloor":
                 if (m_floorManager.canLeaveFloor)
                 {
-                    LeaveFloor(param);
+                    StartCoroutine(LeaveFloor(param));
                 }
                 break;
             case "Open":
