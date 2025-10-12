@@ -63,9 +63,11 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     {
         m_door.CloseDoors(0f);
         //Intermission elevator music
-        SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName);
-        //Enter next scene / floor
         Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
+        //Enter next scene / floor
+        while(SceneManager.loadedSceneCount < 2 && Time.time < 60f)
+        { Debug.Log(Time.time); }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_currentTargetFloorSceneName));
         SceneManager.UnloadSceneAsync(scene);
         m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
@@ -221,26 +223,24 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     public void Testing()
     {
         TESTING_Counter++;
-        if (TESTING_Counter == 1)
+        if (TESTING_Counter == 3)
         {
             m_floorManager.playerHasButton = true;
             CurrentState = "AddButton";
             Control(5);
+            CurrentState = "OpenClose";
         }
-        else if (TESTING_Counter == 2)
+        else if (TESTING_Counter == 4)
         {
             CurrentState = "LeaveFloor";
             Control(5);
-        }
-        else if (TESTING_Counter == 3)
-        {
             CurrentState = "OpenClose";
-            Control();
         }
         else if (TESTING_Counter == 8)
         {
             CurrentState = "LeaveFloor";
             Control(3);
+            CurrentState = "OpenClose";
         }
         else
         {
