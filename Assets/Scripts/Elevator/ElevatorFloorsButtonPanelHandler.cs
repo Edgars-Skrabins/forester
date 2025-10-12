@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 {
+    private bool TESTING = true;
+    private int TESTING_Counter = 0;
     [SerializeField] private FloorManager m_floorManager;
     public bool outsideButtonCanOpen = true;
     private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
@@ -13,6 +15,7 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     private bool m_canBeInteractedWith = false;
     [SerializeField] private string m_currentState = "Open";
     private string m_currentTargetFloorSceneName;
+    public int currentPanelParam = -10;
     [SerializeField] private GameObject m_buttonPanel;
     [SerializeField] private GameObject m_outsideButtonPanel;
     [SerializeField] private ElevatorDoorHandler m_door;
@@ -31,9 +34,23 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         ElevatorButtonAdded = new UnityEvent();
         ElevatorButtonPressed = new UnityEvent();
         LeavingFloor = new UnityEvent();
-        m_floorManager = GameObject.Find("Floor Manager").GetComponent<FloorManager>();
         DontDestroyOnLoad(this);
 
+    }
+
+    private void Start()
+    {
+
+        try
+        {
+            m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
+            m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
+            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
+        }
+        catch
+        {
+            Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene.");
+        }
     }
 
     private void OnDestroy()
@@ -51,21 +68,40 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_currentTargetFloorSceneName));
         SceneManager.UnloadSceneAsync(scene);
-        m_floorManager = GameObject.Find("Floor Manager").GetComponent<FloorManager>();
+        m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
+        m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
+        m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
         m_door.OpenDoors(0f);
         LeavingFloor?.Invoke();
     }
 
     public void Interaction(bool isPanelInside)
     {
+        
         if (m_canBeInteractedWith)
         {
             m_canBeInteractedWith = false;
             m_timeElapsedSinceLastInteraction = 0f;
+
+
+            if (TESTING && isPanelInside)
+            {
+                Debug.Log(TESTING_Counter);
+                Testing();
+                return;
+            }
+
+
             if (isPanelInside)
             {
-                Debug.Log("Interacting with panel Inside"); 
-                Control(); 
+                Debug.Log("Interacting with panel Inside");
+                if (currentPanelParam >= 0 && currentPanelParam <= 9)
+                {
+                    Control(currentPanelParam);
+                }else
+                {
+                    Control();
+                }
             }
             else if (outsideButtonCanOpen)
             {
@@ -184,18 +220,32 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     }
     public void Testing()
     {
-        if (m_door.isOpened)
+        TESTING_Counter++;
+        if (TESTING_Counter == 1)
         {
-            m_door.CloseDoors(0f);
+            m_floorManager.playerHasButton = true;
+            CurrentState = "AddButton";
+            Control(5);
+        }
+        else if (TESTING_Counter == 2)
+        {
+            CurrentState = "LeaveFloor";
+            Control(5);
+        }
+        else if (TESTING_Counter == 3)
+        {
+            CurrentState = "OpenClose";
+            Control();
+        }
+        else if (TESTING_Counter == 8)
+        {
+            CurrentState = "LeaveFloor";
+            Control(3);
         }
         else
         {
-            m_door.OpenDoors(0f);
+            Control();
         }
-    }
-
-    void Start()
-    {
 
     }
 

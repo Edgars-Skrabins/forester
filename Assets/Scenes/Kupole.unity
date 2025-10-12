@@ -2115,10 +2115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanel
-  hasButton: 1
-  CanLeaveFloor: 1
+  m_floorManager: {fileID: 0}
   outsideButtonCanOpen: 1
   m_currentState: Open
+  currentPanelParam: 0
   m_buttonPanel: {fileID: 0}
   m_outsideButtonPanel: {fileID: 0}
   m_door: {fileID: 0}
@@ -6859,10 +6859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanelHandler
-  hasButton: 1
-  CanLeaveFloor: 1
+  m_floorManager: {fileID: 0}
   outsideButtonCanOpen: 1
   m_currentState: Open
+  currentPanelParam: 0
   m_buttonPanel: {fileID: 2850037694966226442}
   m_outsideButtonPanel: {fileID: 9188125908686910695}
   m_door: {fileID: 1480708020030716795}
@@ -7262,6 +7262,67 @@ Transform:
   - {fileID: 330394302196634799}
   m_Father: {fileID: 8415283190673501789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3403856442813353208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240527795175539959, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387169111730312611, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: elevatorOutsidePanel
+      value: 
+      objectReference: {fileID: 9188125908686910695}
+    - target: {fileID: 8390759756685851899, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
+      propertyPath: m_Name
+      value: FloorManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 550d9c3f1cf2d1a4ba3a8c5be5c76a77, type: 3}
 --- !u!224 &3420439170716703911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8081,10 +8142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanel
-  hasButton: 1
-  CanLeaveFloor: 1
+  m_floorManager: {fileID: 0}
   outsideButtonCanOpen: 1
   m_currentState: Open
+  currentPanelParam: 0
   m_buttonPanel: {fileID: 4950653787324886037}
   m_outsideButtonPanel: {fileID: 0}
   m_door: {fileID: 4136614878910756747}
@@ -12902,10 +12963,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanelHandler
-  hasButton: 1
-  CanLeaveFloor: 1
+  m_floorManager: {fileID: 0}
   outsideButtonCanOpen: 1
   m_currentState: Open
+  currentPanelParam: 0
   m_buttonPanel: {fileID: 8298900117378564179}
   m_outsideButtonPanel: {fileID: 953901471}
   m_door: {fileID: 7722041183732553155}
@@ -14974,3 +15035,4 @@ SceneRoots:
   - {fileID: 1726516725436522303}
   - {fileID: 5339587735702454009}
   - {fileID: 8415283190673501789}
+  - {fileID: 3403856442813353208}

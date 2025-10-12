@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ElevatorButtonPanelInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] ElevatorFloorsButtonPanelHandler m_panel;
+    public ElevatorFloorsButtonPanelHandler m_panel;
     [SerializeField] private bool m_isInside;
     public void Interact()
     {
