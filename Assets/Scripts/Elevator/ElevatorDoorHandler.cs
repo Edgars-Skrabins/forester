@@ -1,11 +1,14 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ElevatorDoorHandler : MonoBehaviour
 {
     [SerializeField] private Transform m_door1;
     [SerializeField] private Transform m_door2;
-
+    public UnityEvent m_ElevatorDoorOpened;
+    public UnityEvent m_ElevatorDoorClosed;
+    public bool isOpened = false;
     private Vector3 m_door1StartPos;
     private Vector3 m_door2StartPos;
     
@@ -14,6 +17,9 @@ public class ElevatorDoorHandler : MonoBehaviour
     
     private void Awake() 
     {
+        m_ElevatorDoorOpened = new UnityEvent();
+        m_ElevatorDoorClosed = new UnityEvent();
+
         m_door1StartPos = m_door1.localPosition;
         m_door2StartPos = m_door2.localPosition;;
     }
@@ -25,7 +31,7 @@ public class ElevatorDoorHandler : MonoBehaviour
             OpenDoors(0f);
         }
         
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             CloseDoors(0f);
         }
@@ -38,9 +44,10 @@ public class ElevatorDoorHandler : MonoBehaviour
         sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f*2).SetEase(Ease.InCubic));
         sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f*2).SetEase(Ease.InCubic));
         sequence.Insert(delay + 1.35f*2, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
-// Sound 0.04s
         AudioManager.Instance.PlaySound("SFX_Elevator_Door_Open",transform.position);
         sequence.Play();
+        m_ElevatorDoorOpened.Invoke();
+        isOpened = true;
     }
     
     public void CloseDoors(float delay)
@@ -53,5 +60,12 @@ public class ElevatorDoorHandler : MonoBehaviour
         
         AudioManager.Instance.PlaySound("SFX_Elevator_Door_Close",transform.position);
         sequence.Play();
+        m_ElevatorDoorClosed.Invoke();
+        isOpened = false;
+    }
+    private void OnDestroy()
+    {
+            m_ElevatorDoorOpened = null;
+            m_ElevatorDoorClosed = null;
     }
 }

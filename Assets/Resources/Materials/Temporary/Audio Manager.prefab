@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1509739069427213503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6299295885662202326}
+  - component: {fileID: 1647973684669333549}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6299295885662202326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509739069427213503}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647973684669333549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509739069427213503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff8523df87ebfb48a65e8594aaa77f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  m_dontDestroyOnLoad: 0
+  mixer: {fileID: 24100000, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  masterMixer: {fileID: 24300002, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  musicMixer: {fileID: -4413013334783167680, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  sfxMixer: {fileID: -2245617811425337461, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  ambienceMixer: {fileID: -8298029252519343463, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  uiMixer: {fileID: -4661184281203910144, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
+  audioSFXList:
+  - name: SFX_FootStep0
+    audioClip: {fileID: 8300000, guid: 55a772f35b10c874ab506652e1b120f4, type: 3}
+    volume: 0.3
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep1
+    audioClip: {fileID: 8300000, guid: 243f7e92e05da144aa4dae8a31d7f248, type: 3}
+    volume: 0.3
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep2
+    audioClip: {fileID: 8300000, guid: 90b7db33bfd736b46a89ae9f7001b6c8, type: 3}
+    volume: 0.3
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep3
+    audioClip: {fileID: 8300000, guid: a6a3744674295b84cbdb5c397fe9a22a, type: 3}
+    volume: 0.3
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Wood0
+    audioClip: {fileID: 8300000, guid: 430d741708dc7c043bf90fca28cc6c38, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Wood1
+    audioClip: {fileID: 8300000, guid: d869422a603e8224f89e373a5f733820, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Wood2
+    audioClip: {fileID: 8300000, guid: a4c35e900456e8340a9c6c5cb6ae6935, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Wood3
+    audioClip: {fileID: 8300000, guid: de831f641dc492445a3ee81a20b98f3a, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Metal0
+    audioClip: {fileID: 8300000, guid: ae179bbc4252036478454fe5fa866800, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Metal1
+    audioClip: {fileID: 8300000, guid: 0b0130ae16a8b854da6e582836d933f5, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_FootStep-Metal2
+    audioClip: {fileID: 8300000, guid: f8a4f5eeba2365740a0c20e401dc7f4a, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Door_Close
+    audioClip: {fileID: 8300000, guid: 1847b3f7ec68335478b60f21071b6b07, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Door_Open
+    audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Flashlight_On
+    audioClip: {fileID: 8300000, guid: 44fc51d7dada2324f972036518035eb5, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Flashlight_Off
+    audioClip: {fileID: 8300000, guid: dd4342a3ca734d345a93b0ce180033a9, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2

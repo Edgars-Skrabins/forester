@@ -1636,6 +1636,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanel
   m_hasButton: 1
   m_CanLeaveFloor: 1
+  m_buttonPanel: {fileID: 0}
+  m_door: {fileID: 0}
   m_buttons:
   - {fileID: 1205881212}
   - {fileID: 1789587758}
@@ -1647,16 +1649,10 @@ MonoBehaviour:
   - {fileID: 673947326}
   - {fileID: 1007506861}
   - {fileID: 847879153}
-  m_ButtonAdded:
+  m_ElevatorButtonAdded:
     m_PersistentCalls:
       m_Calls: []
-  m_ButtonPressed:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DoorOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DoorClosed:
+  m_ElevatorButtonPressed:
     m_PersistentCalls:
       m_Calls: []
   m_LeavingFloor:
@@ -3348,6 +3344,8 @@ GameObject:
   - component: {fileID: 2964241070471105766}
   - component: {fileID: 2201347731111461699}
   - component: {fileID: 4136614878910756745}
+  - component: {fileID: 4136614878910756747}
+  - component: {fileID: 4136614878910756746}
   m_Layer: 0
   m_Name: Elevator (1)
   m_TagString: Untagged
@@ -3868,6 +3866,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4136614878910756746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479452738316768860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanel
+  m_hasButton: 1
+  m_CanLeaveFloor: 1
+  m_buttonPanel: {fileID: 4950653787324886037}
+  m_door: {fileID: 4136614878910756747}
+  m_buttons:
+  - {fileID: 4415951895280215824}
+  - {fileID: 128121552946944419}
+  - {fileID: 5531461686202916385}
+  - {fileID: 1748323268438167944}
+  - {fileID: 394955700817424138}
+  - {fileID: 3011817399642473449}
+  - {fileID: 8247489192608344733}
+  - {fileID: 7499936561401112692}
+  - {fileID: 6083051810556276047}
+  - {fileID: 1995786989523069078}
+  m_ElevatorButtonAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ElevatorButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LeavingFloor:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4136614878910756747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479452738316768860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3f762688cd70e4081ae738705a6f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevatorDoorHandler
+  m_door1: {fileID: 7783399605206827777}
+  m_door2: {fileID: 541251964908296586}
+  m_ElevatorDoorOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ElevatorDoorClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  isOpened: 0
+  m_door1EndPos: {x: 0, y: 0, z: 0}
+  m_door2EndPos: {x: 0, y: 0, z: 0}
 --- !u!33 &4298050445929072813
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4085,6 +4142,14 @@ MonoBehaviour:
     concreteClips: []
     metalClips: []
     debug: 0
+  playerFlashlight:
+    flashlightLight: {fileID: 0}
+    toggleAction: {fileID: 0}
+    maxBattery: 100
+    drainRate: 2
+    lowBatteryThreshold: 15
+    flickerIntensity: 0.2
+    flickerSpeed: 0.1
 --- !u!33 &4720398866584290290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4121,8 +4186,8 @@ GameObject:
   - component: {fileID: 8669511033428015370}
   - component: {fileID: 6896344822905212352}
   - component: {fileID: 8669511033428015372}
-  - component: {fileID: 8669511033428015371}
   - component: {fileID: 8669511033428015373}
+  - component: {fileID: 8669511033428015374}
   m_Layer: 0
   m_Name: ElevatorPanel
   m_TagString: Untagged
@@ -4939,46 +5004,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4950653787324886037}
   m_Mesh: {fileID: 72002542908226718, guid: 99f2a721f43f2ac40b4aa07d00f4f3e6, type: 3}
---- !u!114 &8669511033428015371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4950653787324886037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanel
-  m_hasButton: 1
-  m_CanLeaveFloor: 1
-  m_buttons:
-  - {fileID: 4415951895280215824}
-  - {fileID: 128121552946944419}
-  - {fileID: 5531461686202916385}
-  - {fileID: 1748323268438167944}
-  - {fileID: 394955700817424138}
-  - {fileID: 3011817399642473449}
-  - {fileID: 8247489192608344733}
-  - {fileID: 7499936561401112692}
-  - {fileID: 6083051810556276047}
-  - {fileID: 1995786989523069078}
-  m_ButtonAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ButtonPressed:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DoorOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DoorClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LeavingFloor:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &8669511033428015372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5357,6 +5382,19 @@ MonoBehaviour:
     - {x: 0, y: 1, z: 0}
     - {x: 0, y: 1, z: 0}
     - {x: 0, y: 1, z: 0}
+--- !u!114 &8669511033428015374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950653787324886037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8025d32075502b4cab767593a8568c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevatorButtonPanelInsideInteractable
+  m_panel: {fileID: 0}
 --- !u!222 &8873708936319091589
 CanvasRenderer:
   m_ObjectHideFlags: 0

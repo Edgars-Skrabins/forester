@@ -1,4 +1,4 @@
-﻿//
+//
 //  Outline.cs
 //  QuickOutline
 //
@@ -289,7 +289,7 @@ public class Outline : MonoBehaviour {
 
       case Mode.OutlineHidden:
         outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Always);
-        outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
+        outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Equal);
         outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
         break;
 
