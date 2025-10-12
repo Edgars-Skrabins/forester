@@ -768,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bff7b3a8b080245ab10b3143f9e407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenLinkButton
-  url: 
+  url: https://kupole.itch.io/
 --- !u!225 &102069609
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6242,7 +6242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 99ceb22e0d2bd044eb5547fce944f603, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0a2f36be42f54748a3cf7530735d712, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
