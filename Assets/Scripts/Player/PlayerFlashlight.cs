@@ -8,12 +8,15 @@ public class PlayerFlashlight
     [Header("Flashlight Settings")]
     [SerializeField] private Light flashlightLight;
     [SerializeField] private InputActionReference toggleAction;
+    [SerializeField] private InputActionReference rechargeBatteryAction;
     [SerializeField] private float maxBattery = 100f;
-    [SerializeField] private float drainRate = 2f; // per second
+    [SerializeField] private float drainRate = 20f; // per second
     [SerializeField] private float lowBatteryThreshold = 15f;
     [SerializeField] private float flickerIntensity = 0.2f;
     [SerializeField] private float flickerSpeed = 0.1f;
 
+    private float flashlightStartingIntensity; 
+    
     private bool isOn = false;
     private float currentBattery;
     private Coroutine flickerRoutine;
@@ -27,8 +30,10 @@ public class PlayerFlashlight
         coroutineRunner = runner;
         currentBattery = maxBattery;
         flashlightLight.enabled = false;
+        flashlightStartingIntensity = flashlightLight.intensity;
 
         toggleAction.action.performed += ctx => ToggleFlashlight();
+        rechargeBatteryAction.action.performed += ctx => RechargeFlashlight();
     }
 
     public void Update()
@@ -61,6 +66,18 @@ public class PlayerFlashlight
             TurnOff();
         else
             TurnOn();
+    }
+
+    private void RechargeFlashlight()
+    {
+        currentBattery = 100;
+        flashlightLight.intensity = 5f;
+        // flashlightLight.enabled = true;
+        
+        if (flickerRoutine != null)
+        {
+            coroutineRunner.StopCoroutine(flickerRoutine);
+        }
     }
 
     private void TurnOn()
