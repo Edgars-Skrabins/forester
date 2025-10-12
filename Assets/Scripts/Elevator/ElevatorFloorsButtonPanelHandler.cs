@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 {
 
-    public bool m_hasButton = true; //Gonna be read from the data of the current floor
-    public bool m_CanLeaveFloor = true; //Gonna be read from the data of the current floor
+    public bool hasButton = true; //Gonna be read from the data of the current floor
+    public bool CanLeaveFloor = true; //Gonna be read from the data of the current floor
     private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
     private float m_minTimeBetweenInteractions = 0.2f; // in seconds
     private bool m_canBeInteractedWith = false;
@@ -15,30 +15,29 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 
     [SerializeField] private List<GameObject> m_buttons;
     public List<GameObject> Buttons { get { return m_buttons; } set { m_buttons = value; } }
-    public UnityEvent m_ElevatorButtonAdded;
-    public UnityEvent m_ElevatorButtonPressed;
-    public UnityEvent m_LeavingFloor;
+    public UnityEvent ElevatorButtonAdded;
+    public UnityEvent ElevatorButtonPressed;
+    public UnityEvent LeavingFloor;
 
 
     private void Awake()
     {
         //Initialize My_Events
-        m_ElevatorButtonAdded = new UnityEvent();
-        m_ElevatorButtonPressed = new UnityEvent();
+        ElevatorButtonAdded = new UnityEvent();
+        ElevatorButtonPressed = new UnityEvent();
 
 
     }
 
     private void OnDestroy()
     {
-        m_ElevatorButtonAdded = null;
-        m_ElevatorButtonPressed = null;
+        ElevatorButtonAdded = null;
+        ElevatorButtonPressed = null;
     }
 
     public void LeaveFloor(int nextFloorIndex)
     {
         m_door.CloseDoors(0f);
-        //Play Door Closing Animation
         //Intermission elevator music
         //Enter next scene / floor
         m_door.OpenDoors(0f);
@@ -55,11 +54,10 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         }
     }
 
-
     public void AddButton(int floorIndex)
     {
         m_buttons[floorIndex].SetActive(true);
-        m_ElevatorButtonAdded.Invoke();
+        ElevatorButtonAdded.Invoke();
     }
 
     private void IncrementInteractionTime()
@@ -74,6 +72,10 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         }
     }
 
+        /*
+    The function of the Button panel is going to be state wise, meaning: one state will only enable adding the button, another will only enable pressing the button to leave the floor, another will allow player only to open,
+    another only to close, another to open and close.
+        */
     public void Testing()
     {
         if (m_door.isOpened)
@@ -91,7 +93,6 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         IncrementInteractionTime();   
