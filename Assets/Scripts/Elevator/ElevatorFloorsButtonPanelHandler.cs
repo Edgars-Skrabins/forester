@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 {
-
-    public bool hasButton = true; //Gonna be read from the data of the current floor
-    public bool CanLeaveFloor = true; //Gonna be read from the data of the current floor
+    [SerializeField] private FloorManager m_floorManager;
     public bool outsideButtonCanOpen = true;
     private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
     private float m_minTimeBetweenInteractions = 0.2f; // in seconds
@@ -33,7 +31,8 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         ElevatorButtonAdded = new UnityEvent();
         ElevatorButtonPressed = new UnityEvent();
         LeavingFloor = new UnityEvent();
-
+        m_floorManager = GameObject.Find("Floor Manager").GetComponent<FloorManager>();
+        DontDestroyOnLoad(this);
 
     }
 
@@ -52,6 +51,7 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_currentTargetFloorSceneName));
         SceneManager.UnloadSceneAsync(scene);
+        m_floorManager = GameObject.Find("Floor Manager").GetComponent<FloorManager>();
         m_door.OpenDoors(0f);
         LeavingFloor?.Invoke();
     }
@@ -103,13 +103,13 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     {
         switch (m_currentState){
             case "AddButton":
-                if (hasButton)
+                if (m_floorManager.playerHasButton)
                 {
                     AddButton(param);
                 }
                 break;
             case "LeaveFloor":
-                if (CanLeaveFloor)
+                if (m_floorManager.canLeaveFloor)
                 {
                     LeaveFloor(param);
                 }
