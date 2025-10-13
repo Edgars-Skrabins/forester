@@ -6,6 +6,7 @@ public class Openable : Interactable
 {
     private bool isOpen = false;
     private Vector3 closedPosition;
+    [SerializeField] private Transform target;
     [SerializeField] private Vector3 targetVector;
     [SerializeField] private string sfxOpenClipName,sfxCloseClipName;
     [SerializeField] private bool isRotational = false;
@@ -14,7 +15,8 @@ public class Openable : Interactable
 
     private void Awake()
     {
-        closedPosition = !isRotational ? transform.localPosition : transform.eulerAngles;
+        if(target == null) target = transform;
+        closedPosition = !isRotational ? target.localPosition : target.eulerAngles;
     }
 
     public override void Interact()
@@ -37,11 +39,11 @@ public class Openable : Interactable
 
         if (!isRotational)
         {
-            transform.DOLocalMove(targetVector, animationDuration).SetEase(animationEase);
+            target.DOLocalMove(targetVector, animationDuration).SetEase(animationEase);
         }
         else
         {
-            transform.DOLocalRotate(targetVector, animationDuration).SetEase(animationEase);
+            target.DOLocalRotate(targetVector, animationDuration).SetEase(animationEase);
         }
 
         AudioManager.Instance.PlaySound(sfxOpenClipName, transform.position);
@@ -55,11 +57,11 @@ public class Openable : Interactable
 
         if (!isRotational)
         {
-            transform.DOLocalMove(closedPosition, animationDuration).SetEase(animationEase);
+            target.DOLocalMove(closedPosition, animationDuration).SetEase(animationEase);
         }
         else
         {
-            transform.DOLocalRotate(closedPosition, animationDuration).SetEase(animationEase);
+            target.DOLocalRotate(closedPosition, animationDuration).SetEase(animationEase);
         }
 
         AudioManager.Instance.PlaySound(sfxCloseClipName, transform.position);

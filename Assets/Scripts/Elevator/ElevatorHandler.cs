@@ -262,7 +262,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
         }
     }
-    public void Control(Sequence sequenceParam, string soundParam)
+    public void Control(Sequence sequenceParam)
     {
         if (door.isSequencePlaying)
         {
@@ -271,25 +271,25 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         switch (_currentState)
         {
             case ElevatorState.Open:
-                door.OpenDoors(sequenceParam, soundParam);
+                door.OpenDoors(sequenceParam);
                 break;
             case ElevatorState.Close:
-                door.CloseDoors(sequenceParam, soundParam);
+                door.CloseDoors(sequenceParam);
                 break;
             case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
-                    door.CloseDoors(sequenceParam, soundParam);
+                    door.CloseDoors(sequenceParam);
                 }
                 else
                 {
-                    door.OpenDoors(sequenceParam, soundParam);
+                    door.OpenDoors(sequenceParam);
                 }
                 break;
 
         }
     }
-    public void Control(Sequence openSequenceParam, string openSoundParam, Sequence closeSequenceParam, string closeSoundParam)
+    public void Control(Sequence openSequenceParam,  Sequence closeSequenceParam)
     {
         if (door.isSequencePlaying)
         {
@@ -298,19 +298,19 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         switch (_currentState)
         {
             case ElevatorState.Open:
-                door.OpenDoors(openSequenceParam, openSoundParam);
+                door.OpenDoors(openSequenceParam);
                 break;
             case ElevatorState.Close:
-                door.CloseDoors(closeSequenceParam, closeSoundParam);
+                door.CloseDoors(closeSequenceParam);
                 break;
             case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
-                    door.CloseDoors(closeSequenceParam, closeSoundParam);
+                    door.CloseDoors(closeSequenceParam);
                 }
                 else
                 {
-                    door.OpenDoors(openSequenceParam, openSoundParam);
+                    door.OpenDoors(openSequenceParam);
                 }
                 break;
 
