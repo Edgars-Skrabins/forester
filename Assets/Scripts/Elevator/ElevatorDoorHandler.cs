@@ -44,7 +44,14 @@ public class ElevatorDoorHandler : MonoBehaviour
     public void OpenDoors(float delay)
     {
         extraCollider.enabled = false;
-        if (!isOpened)
+        if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                OpenDoors(delay);
+            });
+        }
+        else if (!isOpened)
         {
             isSequencePlaying = true;
             sequence = DOTween.Sequence();
@@ -60,19 +67,20 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = true;
             });
-        } else if (isSequencePlaying)
-        {
-            sequence.OnComplete(() =>
-            {
-                OpenDoors(delay);
-            });
         }
     }
 
     public void CloseDoors(float delay)
     {
         extraCollider.enabled = true;
-        if (isOpened)
+        if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                CloseDoors(delay);
+            });
+        }
+        else if (isOpened)
         {
             isSequencePlaying = true;
             sequence = DOTween.Sequence();
@@ -89,17 +97,18 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = false;
             });
-        } else if (isSequencePlaying)
-        {
-            sequence.OnComplete(() =>
-            {
-                CloseDoors(delay);
-            });
         }
     }
-    public void OpenDoors(Sequence sequence) // Sound should be played in the sequence itself
+    public void OpenDoors(Sequence sequence)// Sound should be played in the sequence itself
     {
-        if (!isOpened)
+        if (isSequencePlaying)
+        {
+            this.sequence.OnComplete(() =>
+            {
+                OpenDoors(sequence);
+            });
+        }
+        else if (!isOpened)
         {
             isSequencePlaying = true; 
             sequence.Play();
@@ -109,17 +118,18 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = true;
             });
-        } else if (isSequencePlaying)
-        {
-            sequence.OnComplete(() =>
-            {
-                OpenDoors(sequence);
-            });
         }
     }
     public void CloseDoors(Sequence sequence) // Sound should be played in the sequence itself
     {
-        if (!isOpened)
+        if (isSequencePlaying)
+        {
+            this.sequence.OnComplete(() =>
+            {
+                CloseDoors(sequence);
+            });
+        }
+        else if (!isOpened)
         {
             isSequencePlaying = true;
             sequence.Play();
@@ -128,13 +138,6 @@ public class ElevatorDoorHandler : MonoBehaviour
                 m_ElevatorDoorClosed?.Invoke();
                 isSequencePlaying = false;
                 isOpened = false;
-            });
-        }
-        else if (isSequencePlaying)
-        {
-            sequence.OnComplete(() =>
-            {
-                CloseDoors(sequence);
             });
         }
     }
