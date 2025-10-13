@@ -17,7 +17,7 @@ public class PlayerFlashlight
 
     private float flashlightStartingIntensity; 
     
-    private bool isOn = false;
+    private bool isOn;
     private float currentBattery;
     private Coroutine flickerRoutine;
     private MonoBehaviour coroutineRunner; // to allow coroutines from this serialized class
@@ -70,14 +70,14 @@ public class PlayerFlashlight
 
     private void RechargeFlashlight()
     {
-        currentBattery = 100;
-        flashlightLight.intensity = 5f;
-        // flashlightLight.enabled = true;
-        
         if (flickerRoutine != null)
         {
             coroutineRunner.StopCoroutine(flickerRoutine);
+            flickerRoutine = null;
         }
+        currentBattery = maxBattery;
+        flashlightLight.intensity = flashlightStartingIntensity;
+        // flashlightLight.enabled = true;
     }
 
     private void TurnOn()

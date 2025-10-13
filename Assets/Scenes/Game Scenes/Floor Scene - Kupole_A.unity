@@ -1737,6 +1737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7531993757264386503, guid: 1712b64e569ae43478fbc51d56567b22, type: 3}
+      propertyPath: playerInteraction.interactRange
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1805,6 +1809,10 @@ PrefabInstance:
     - target: {fileID: 5874367253476002908, guid: 7eb7be6d321d365409a833b104852e14, type: 3}
       propertyPath: m_currentState
       value: OpenClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708688517380756268, guid: 7eb7be6d321d365409a833b104852e14, type: 3}
+      propertyPath: outlineMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2252,6 +2260,10 @@ PrefabInstance:
     - target: {fileID: 6867253706953837921, guid: fa75408efe02bf648aed1ef7afe116a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472734686799767838, guid: fa75408efe02bf648aed1ef7afe116a8, type: 3}
+      propertyPath: outlineMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

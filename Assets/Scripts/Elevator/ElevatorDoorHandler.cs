@@ -86,7 +86,7 @@ public class ElevatorDoorHandler : MonoBehaviour
             AudioManager.Instance.PlaySound(soundName, transform.position);
             sequence.Play();
         }
-                m_ElevatorDoorClosed?.Invoke();
+        m_ElevatorDoorClosed?.Invoke();
         isOpened = false;
     }
 }
