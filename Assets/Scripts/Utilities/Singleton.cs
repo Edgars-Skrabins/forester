@@ -16,7 +16,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else if (Instance != null && Instance != this)
         {
-            Debug.LogError("There's more than one singleton " + gameObject.name + " of type " + GetType());
+            Debug.LogWarning("There's more than one singleton " + gameObject.name + " of type " + GetType());
             Destroy(gameObject);
         }
 

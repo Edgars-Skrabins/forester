@@ -7,29 +7,32 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorHandler : Singleton<ElevatorHandler>
 {
-    private Player m_player;
-    private bool TESTING = true;
-    private int TESTING_Counter = 0;
-    [SerializeField] private FloorManager m_floorManager;
-    public bool outsideButtonCanOpen = true;
-    private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
-    private float m_minTimeBetweenInteractions = 0.2f; // in seconds
-    private bool m_canBeInteractedWith = false;
     [SerializeField] private string m_currentState = "Open";
-    private string m_currentTargetFloorSceneName;
-    public int currentPanelParam = -10;
+    [SerializeField] private FloorManager m_floorManager;
     [SerializeField] private bool m_isPlayerInside = false;
     [SerializeField] private GameObject m_buttonPanel;
     [SerializeField] private GameObject m_outsideButtonPanel;
     [SerializeField] private ElevatorDoorHandler m_door;
-
     [SerializeField] private List<GameObject> m_buttons;
-    public List<GameObject> Buttons { get { return m_buttons; } set { m_buttons = value; } }
     public UnityEvent ElevatorButtonAdded;
     public UnityEvent ElevatorButtonPressed;
+    public UnityEvent PlayerLeftElevator;
+    public UnityEvent PlayerEnteredElevator;
     public UnityEvent LeavingFloor;
-
+    public bool outsideButtonCanOpen = true;
+    public int currentPanelParam = -10;
+    public List<GameObject> Buttons { get { return m_buttons; } set { m_buttons = value; } }
     public string CurrentState { get { return m_currentState; } set { m_currentState = value; } }
+    private Player m_player;
+    private bool TESTING = true;
+    private int TESTING_Counter = 0;
+    private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
+    private float m_minTimeBetweenInteractions = 0.2f; // in seconds
+    private bool m_canBeInteractedWith = false;
+    private string m_currentTargetFloorSceneName;
+
+
+
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ElevatorButtonAdded = new UnityEvent();
         ElevatorButtonPressed = new UnityEvent();
+        PlayerLeftElevator = new UnityEvent();
+        PlayerEnteredElevator = new UnityEvent();
         LeavingFloor = new UnityEvent();
         if(GameObject.FindGameObjectsWithTag("Elevator").Length > 1 && this.gameObject.scene.buildIndex != -1)
         {
@@ -64,6 +69,23 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         catch
         {
             Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            m_isPlayerInside = true;
+            PlayerEnteredElevator?.Invoke();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            m_isPlayerInside = false;
+            PlayerLeftElevator?.Invoke();
         }
     }
 
@@ -133,21 +155,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            m_isPlayerInside = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            m_isPlayerInside = false;
-        }
-    }
-
     public void Interaction(bool isPanelInside)
     {
         
@@ -207,6 +214,11 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
     public void Control(int param = 0)
     {
+        if (m_door.isSequencePlaying)
+        {
+            TESTING_Counter--;
+            return;
+        }
         switch (m_currentState){
             case "AddButton":
                 if (m_floorManager.playerHasButton)
@@ -221,24 +233,12 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 }
                 break;
             case "Open":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.OpenDoors(0f);
                 break;
             case "Close":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.CloseDoors(0f);
                 break;
             case "OpenClose":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(0f);
@@ -253,27 +253,20 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     }
     public void Control(Sequence sequenceParam, string soundParam)
     {
+        if (m_door.isSequencePlaying)
+        {
+            TESTING_Counter--;
+            return;
+        }
         switch (m_currentState)
         {
             case "Open":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.OpenDoors(sequenceParam, soundParam);
                 break;
             case "Close":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.CloseDoors(sequenceParam, soundParam);
                 break;
             case "OpenClose":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(sequenceParam, soundParam);
@@ -288,27 +281,20 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     }
     public void Control(Sequence openSequenceParam, string openSoundParam, Sequence closeSequenceParam, string closeSoundParam)
     {
+        if (m_door.isSequencePlaying)
+        {
+            TESTING_Counter--;
+            return;
+        }
         switch (m_currentState)
         {
             case "Open":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.OpenDoors(openSequenceParam, openSoundParam);
                 break;
             case "Close":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 m_door.CloseDoors(closeSequenceParam, closeSoundParam);
                 break;
             case "OpenClose":
-                if (m_door.isSequencePlaying)
-                {
-                    return;
-                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(closeSequenceParam, closeSoundParam);
