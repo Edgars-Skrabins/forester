@@ -11,7 +11,7 @@ public class PlayerInteraction
     private IInteractable currentTarget;
     private Interactable currentInteractable;
 
-    [SerializeField] private InputActionReference lookAction;
+    [SerializeField] private InputActionReference interactAction;
 
     public void LookForInteraction()
     {
@@ -27,7 +27,6 @@ public class PlayerInteraction
 
             if (hitInteractable != null)
             {
-                // If looking at a new interactable, disable the old one
                 if (currentInteractable != hitInteractable)
                 {
                     if (currentInteractable != null)
@@ -37,9 +36,8 @@ public class PlayerInteraction
                     currentInteractable.EnableOutline();
                 }
 
-                if (lookAction.action.triggered == true)
+                if (interactAction.action.triggered == true)
                 {
-                    Debug.Log("Interacted with " + currentInteractable.gameObject.name);
                     currentInteractable.Interact();
                 }
             }

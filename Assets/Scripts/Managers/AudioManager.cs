@@ -60,11 +60,9 @@ public class AudioManager : Singleton<AudioManager>
             for (int i = 0; i < sfx.poolSize; i++)
             {
                 GameObject sfxObject = new GameObject(sfx.name + "_Source_" + i);
-                DontDestroyOnLoad(sfxObject); // Added by kupole - to keep audio sources between scenes
                 sfxObject.transform.SetParent(sfxParent.transform);
 
                 AudioSource newAudioSource = sfxObject.AddComponent<AudioSource>();
-                DontDestroyOnLoad(newAudioSource); // Added by kupole - to keep audio sources between scenes
                 newAudioSource.clip = sfx.audioClip;
                 newAudioSource.volume = sfx.volume;
                 newAudioSource.loop = sfx.loop;

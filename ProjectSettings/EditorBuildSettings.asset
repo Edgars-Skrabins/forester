@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/Floor 1 Scene.unity
     guid: ba3fd26d917da1349a9bd29966374bda
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Floor Scene - Kupole_A.unity
+    path: Assets/Scenes/Example Scenes/Floor Scene - Kupole_A.unity
     guid: 594c8fc5125198144a8ea41aa09f3fc6
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Floor Scene - Kupole_B.unity
-    guid: fdf70e96a1c79794a9a31fa764e5d9eb
+    path: Assets/Scenes/Example Scenes/Floor Scene - Kupole_B.unity
+    guid: e9c5dd862f238fc479fa5cdad6600e35
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

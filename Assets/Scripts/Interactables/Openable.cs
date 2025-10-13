@@ -6,7 +6,7 @@ public class Openable : Interactable
 {
     private bool isOpen = false;
     private Vector3 closedPosition;
-    [SerializeField] private Vector3 openPosition;
+    [SerializeField] private Vector3 targetVector;
     [SerializeField] private string sfxOpenClipName,sfxCloseClipName;
     [SerializeField] private bool isRotational = false;
     [SerializeField] private float animationDuration = 1f;
@@ -33,27 +33,26 @@ public class Openable : Interactable
     {
         if (isOpen) return;
         isOpen = true;
-        // Play open animation or change state
         Debug.Log("Opened!");
-        
+
         if (!isRotational)
         {
-            transform.DOLocalMove(openPosition, animationDuration).SetEase(animationEase);
+            transform.DOLocalMove(targetVector, animationDuration).SetEase(animationEase);
         }
         else
         {
-            transform.DOLocalRotate(openPosition, animationDuration).SetEase(animationEase);
+            transform.DOLocalRotate(targetVector, animationDuration).SetEase(animationEase);
         }
-        AudioManager.Instance.PlaySound(sfxOpenClipName,transform.position);
+
+        AudioManager.Instance.PlaySound(sfxOpenClipName, transform.position);
     }
-    
+
     private void Close()
     {
         if (!isOpen) return;
         isOpen = false;
-        // Play close animation or change state
         Debug.Log("Closed!");
-        
+
         if (!isRotational)
         {
             transform.DOLocalMove(closedPosition, animationDuration).SetEase(animationEase);
@@ -62,6 +61,8 @@ public class Openable : Interactable
         {
             transform.DOLocalRotate(closedPosition, animationDuration).SetEase(animationEase);
         }
-        AudioManager.Instance.PlaySound(sfxCloseClipName,transform.position);
+
+        AudioManager.Instance.PlaySound(sfxCloseClipName, transform.position);
     }
+
 }

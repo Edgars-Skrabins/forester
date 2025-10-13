@@ -5,13 +5,33 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+public enum ElevatorState
+{
+    AddButton,
+    AddButtonAndLeave,
+    LeaveFloor,
+    Open,
+    Close,
+    OpenClose
+}
+
 public class ElevatorHandler : Singleton<ElevatorHandler>
 {
-    [SerializeField] private string m_currentState = "Open";
+    [SerializeField] private ElevatorState _currentState = ElevatorState.Open;
+
+    public ElevatorState GetCurrentState()
+    {
+        return _currentState;
+    }
+
+    public void SetState(ElevatorState _newState)
+    {
+        _currentState = _newState;
+    }
+    
     [SerializeField] private FloorManager m_floorManager;
     [SerializeField] private bool m_isPlayerInside = false;
     [SerializeField] private GameObject m_buttonPanel;
-    [SerializeField] private GameObject m_outsideButtonPanel;
     [SerializeField] private List<GameObject> m_buttons;
     public ElevatorDoorHandler door;
     public UnityEvent ElevatorButtonAdded;
@@ -22,49 +42,20 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     public bool outsideButtonCanOpen = true;
     [SerializeField] private int m_currentSelectedFloor = -10;
     public int CurrentSelectedFloor { get { return m_currentSelectedFloor; } set { m_currentSelectedFloor = value; } }
-    public List<GameObject> Buttons { get { return m_buttons; } set { m_buttons = value; } }
-    public string CurrentState { get { return m_currentState; } set { m_currentState = value; } }
-    private Player m_player;
     private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
     private float m_minTimeBetweenInteractions = 0.2f; // in seconds
     private bool m_canBeInteractedWith = false;
     private string m_currentTargetFloorSceneName;
-
-
-    private void EventInitializationAndReferenceGrabbing()
-    {
-        m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        ElevatorButtonAdded = new UnityEvent();
-        ElevatorButtonPressed = new UnityEvent();
-        PlayerLeftElevator = new UnityEvent();
-        PlayerEnteredElevator = new UnityEvent();
-        LeavingFloor = new UnityEvent();
-    }
-
-    private void Awake()
-    {
-        //Initialize My_Events
-        if(GameObject.FindGameObjectsWithTag("Elevator").Length > 1 && this.gameObject.scene.buildIndex != -1)
-        {
-            Destroy(this.gameObject, 0f);
-        } else
-        { DontDestroyOnLoad(this.gameObject); }
-        DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
-
-
-    }
-
+    
     private void Start()
     {
         EventInitializationAndReferenceGrabbing();
 
         try
         {
-            this.GetComponentInChildren<ElevatorButtonPanelInteractable>().m_Elevator = this;
             m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
-            m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
+            // m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
             m_floorManager.SetElevatorReferences();
-            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_Elevator = this;
             Debug.Log("Found floor manager and outside button panel, references set.");
         }
         catch
@@ -73,6 +64,15 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         }
         m_floorManager.ScriptedEvents(0);
     }
+    
+    private void EventInitializationAndReferenceGrabbing()
+    {
+        ElevatorButtonAdded = new UnityEvent();
+        ElevatorButtonPressed = new UnityEvent();
+        PlayerLeftElevator = new UnityEvent();
+        PlayerEnteredElevator = new UnityEvent();
+        LeavingFloor = new UnityEvent();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -80,6 +80,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             m_isPlayerInside = true;
             PlayerEnteredElevator?.Invoke();
+            other.transform.SetParent(this.transform);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -88,6 +89,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             m_isPlayerInside = false;
             PlayerLeftElevator?.Invoke();
+            other.transform.SetParent(null);
         }
     }
 
@@ -101,7 +103,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         StartCoroutine(LeaveFloor(nextFloorIndex));
     }
 
-    public IEnumerator LeaveFloor(int nextFloorIndex)
+    private IEnumerator LeaveFloor(int nextFloorIndex)
     {
         m_currentTargetFloorSceneName = m_buttons[nextFloorIndex].GetComponent<ElevatorButton>().targetFloorSceneName;
         if (m_isPlayerInside)
@@ -130,9 +132,8 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                     yield return null;
                 }
                 try { 
-                    m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
-                    m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-                    m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().SetElevatorReference(this);
+                    m_floorManager = FindFirstObjectByType<FloorManager>();
+                    // m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
                     m_floorManager.SetElevatorReferences();
                     m_floorManager.ScriptedEvents(0);
                 }
@@ -164,22 +165,10 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         }
     }
 
-    public void AddButton(int floorIndex)
+    private void AddButton(int floorIndex)
     {
         m_buttons[floorIndex].SetActive(true);
         ElevatorButtonAdded?.Invoke();
-    }
-
-    private void IncrementInteractionTime()
-    {
-        if (m_timeElapsedSinceLastInteraction >= m_minTimeBetweenInteractions)
-        {
-            m_canBeInteractedWith = true;
-        }
-        else if (m_timeElapsedSinceLastInteraction + Time.deltaTime < float.MaxValue)
-        {
-            m_timeElapsedSinceLastInteraction += Time.deltaTime;
-        }
     }
 
     public void Control(float delay, int param = 0)
@@ -188,33 +177,33 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             return;
         }
-        switch (m_currentState){
-            case "AddButton":
+        switch (_currentState){
+            case ElevatorState.AddButton:
                 if (m_floorManager.playerHasButton)
                 {
                     AddButton(param);
                 }
                 break;
-            case "AddButtonAndLeave":
+            case ElevatorState.AddButtonAndLeave:
                 if (m_floorManager.playerHasButton)
                 {
                     AddButton(param);
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
-            case "LeaveFloor":
+            case ElevatorState.LeaveFloor:
                 if (m_floorManager.canLeaveFloor)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
-            case "Open":
+            case ElevatorState.Open:
                 door.OpenDoors(delay);
                 break;
-            case "Close":
+            case ElevatorState.Close:
                 door.CloseDoors(delay);
                 break;
-            case "OpenClose":
+            case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
                     door.CloseDoors(delay);
@@ -233,34 +222,34 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             return;
         }
-        switch (m_currentState)
+        switch (_currentState)
         {
-            case "AddButton":
+            case ElevatorState.AddButton:
                 if (m_floorManager.playerHasButton)
                 {
                     AddButton(param);
                 }
                 break;
-            case "AddButtonAndLeave":
+            case ElevatorState.AddButtonAndLeave:
                 if (m_floorManager.playerHasButton)
                 {
                     AddButton(param);
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
-            case "LeaveFloor":
+            case ElevatorState.LeaveFloor:
                 if (m_floorManager.canLeaveFloor)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
-            case "Open":
+            case ElevatorState.Open:
                 door.OpenDoors(0f);
                 break;
-            case "Close":
+            case ElevatorState.Close:
                 door.CloseDoors(0f);
                 break;
-            case "OpenClose":
+            case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
                     door.CloseDoors(0f);
@@ -279,15 +268,15 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             return;
         }
-        switch (m_currentState)
+        switch (_currentState)
         {
-            case "Open":
+            case ElevatorState.Open:
                 door.OpenDoors(sequenceParam, soundParam);
                 break;
-            case "Close":
+            case ElevatorState.Close:
                 door.CloseDoors(sequenceParam, soundParam);
                 break;
-            case "OpenClose":
+            case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
                     door.CloseDoors(sequenceParam, soundParam);
@@ -306,15 +295,15 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             return;
         }
-        switch (m_currentState)
+        switch (_currentState)
         {
-            case "Open":
+            case ElevatorState.Open:
                 door.OpenDoors(openSequenceParam, openSoundParam);
                 break;
-            case "Close":
+            case ElevatorState.Close:
                 door.CloseDoors(closeSequenceParam, closeSoundParam);
                 break;
-            case "OpenClose":
+            case ElevatorState.OpenClose:
                 if (door.isOpened)
                 {
                     door.CloseDoors(closeSequenceParam, closeSoundParam);
@@ -326,10 +315,5 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 break;
 
         }
-    }
-
-    void Update()
-    {
-        IncrementInteractionTime();
     }
 }

@@ -1,13 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 
 public abstract class FloorManager : MonoBehaviour
 {
     [Header("This list contains references to\n\t- Objects\n\t- Interactable Objects\n\n\tused in the scripted sequence\n")]
     [SerializeField] protected List<GameObject> ScriptedObjectReferences;
     [Space]
-    public GameObject elevatorOutsidePanel;
     public bool playerHasButton = true; //Gonna be read from the data of the current floor
     public bool canLeaveFloor = true; //Gonna be read from the data of the current floor
     protected GameObject elevator;

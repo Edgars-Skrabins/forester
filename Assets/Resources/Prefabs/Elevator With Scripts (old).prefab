@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 5874367253476002908}
   - component: {fileID: 4900221669783020864}
   m_Layer: 0
-  m_Name: Elevator With Scripts
+  m_Name: Elevator With Scripts (old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
