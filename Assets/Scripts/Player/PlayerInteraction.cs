@@ -37,8 +37,9 @@ public class PlayerInteraction
                     currentInteractable.EnableOutline();
                 }
 
-                if (lookAction.action.triggered)
+                if (lookAction.action.triggered == true)
                 {
+                    Debug.Log("Interacted with " + currentInteractable.gameObject.name);
                     currentInteractable.Interact();
                 }
             }

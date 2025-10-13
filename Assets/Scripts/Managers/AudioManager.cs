@@ -46,6 +46,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         audioPools = new Dictionary<string, List<AudioSource>>();
         GameObject audioSourcesParent = new GameObject("AudioSources");
+        DontDestroyOnLoad(audioSourcesParent); // Added by kupole - to keep audio sources between scenes
         audioSourcesParent.transform.SetParent(transform);
 
         foreach (AudioSFX sfx in audioSFXList)
@@ -53,14 +54,17 @@ public class AudioManager : Singleton<AudioManager>
             List<AudioSource> pool = new List<AudioSource>();
 
             GameObject sfxParent = new GameObject(sfx.name + "_Pool");
+            DontDestroyOnLoad(sfxParent); // Added by kupole - to keep audio sources between scenes
             sfxParent.transform.SetParent(audioSourcesParent.transform);
 
             for (int i = 0; i < sfx.poolSize; i++)
             {
                 GameObject sfxObject = new GameObject(sfx.name + "_Source_" + i);
+                DontDestroyOnLoad(sfxObject); // Added by kupole - to keep audio sources between scenes
                 sfxObject.transform.SetParent(sfxParent.transform);
 
                 AudioSource newAudioSource = sfxObject.AddComponent<AudioSource>();
+                DontDestroyOnLoad(newAudioSource); // Added by kupole - to keep audio sources between scenes
                 newAudioSource.clip = sfx.audioClip;
                 newAudioSource.volume = sfx.volume;
                 newAudioSource.loop = sfx.loop;
@@ -107,6 +111,7 @@ public class AudioManager : Singleton<AudioManager>
         GameObject sfxParent = pool[0].transform.parent.gameObject;
 
         GameObject sfxObject = new GameObject(name + "_Source_Extra_" + pool.Count);
+        DontDestroyOnLoad(sfxObject); // Added by kupole - to keep audio sources between scenes
         sfxObject.transform.SetParent(sfxParent.transform);
 
         AudioSource newAudioSource = sfxObject.AddComponent<AudioSource>();

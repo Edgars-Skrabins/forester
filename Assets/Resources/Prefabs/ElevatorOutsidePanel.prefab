@@ -1515,8 +1515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8025d32075502b4cab767593a8568c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButtonPanelInteractable
-  m_panel: {fileID: 0}
-  m_isInside: 1
+  m_Elevator: {fileID: 0}
+  m_isInside: 0
 --- !u!114 &8472734686799767838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 2
+  outlineMode: 1
   outlineColor: {r: 1, g: 0.9292453, b: 0.8349056, a: 1}
   outlineWidth: 5
   precomputeOutline: 0

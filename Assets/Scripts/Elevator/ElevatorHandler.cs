@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
+public class ElevatorHandler : Singleton<ElevatorHandler>
 {
+    private Player m_player;
     private bool TESTING = true;
     private int TESTING_Counter = 0;
     [SerializeField] private FloorManager m_floorManager;
@@ -17,6 +18,7 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     [SerializeField] private string m_currentState = "Open";
     private string m_currentTargetFloorSceneName;
     public int currentPanelParam = -10;
+    [SerializeField] private bool m_isPlayerInside = false;
     [SerializeField] private GameObject m_buttonPanel;
     [SerializeField] private GameObject m_outsideButtonPanel;
     [SerializeField] private ElevatorDoorHandler m_door;
@@ -32,14 +34,15 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     private void Awake()
     {
         //Initialize My_Events
+        m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ElevatorButtonAdded = new UnityEvent();
         ElevatorButtonPressed = new UnityEvent();
         LeavingFloor = new UnityEvent();
         if(GameObject.FindGameObjectsWithTag("Elevator").Length > 1 && this.gameObject.scene.buildIndex != -1)
         {
-            Destroy(this, 0f);
+            Destroy(this.gameObject, 0f);
         } else
-        { DontDestroyOnLoad(this); }
+        { DontDestroyOnLoad(this.gameObject); }
         DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
 
 
@@ -50,9 +53,13 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 
         try
         {
+            this.GetComponentInChildren<ElevatorButtonPanelInteractable>().m_Elevator = this;
             m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
             m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
+            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_Elevator = this;
+            Debug.Log("Found floor manager and outside button panel, references set.");
+            //debug log the m_panel of elevatorOutsidePanel
+            Debug.Log("m_panel of elevatorOutsidePanel: " + m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_Elevator);
         }
         catch
         {
@@ -66,46 +73,89 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         ElevatorButtonPressed = null;
     }
 
+    private IEnumerator CloseBeforeLeaving(int nextFloorIndex)
+    {
+        m_door.CloseDoors(0f); 
+        while (m_door.isOpened)
+        {
+            yield return null;
+        }
+        StartCoroutine(LeaveFloor(nextFloorIndex));
+    }
+
     public IEnumerator LeaveFloor(int nextFloorIndex)
     {
-        
-        if (m_door.isOpened)
+        m_currentTargetFloorSceneName = m_buttons[nextFloorIndex].GetComponent<ElevatorButton>().targetFloorSceneName;
+        if (m_isPlayerInside)
         {
-            m_door.CloseDoors(0f);
-            TESTING_Counter--;
+            if (m_door.isOpened)
+            {
+                
+                StartCoroutine(CloseBeforeLeaving(nextFloorIndex));
+            } else
+            {
+                LeavingFloor?.Invoke();
+                //Intermission elevator music
+                Scene scene = SceneManager.GetActiveScene();
+                AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
+                asyncLoad.allowSceneActivation = true;
+
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
+
+                AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene); 
+
+                while (!asyncUnLoad.isDone)
+                {
+                    yield return null;
+                }
+                try { 
+                    m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
+                    m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
+                    m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().SetElevatorReference(this);
+                    Debug.Log("Found floor manager and outside button panel, references set.");
+                    //debug log the m_panel of elevatorOutsidePanel
+                    Debug.Log("m_panel of elevatorOutsidePanel: " + m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_Elevator);
+                    m_door.OpenDoors(1f);
+                }
+                catch
+                {                    
+                    Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
+                }
+            }
+
         }
         else
         {
-            //Intermission elevator music
-            Scene scene = SceneManager.GetActiveScene();
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
-            asyncLoad.allowSceneActivation = true;
+            TESTING_Counter--;
+        }
+    }
 
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            SceneManager.UnloadSceneAsync(scene);
-
-            m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
-            m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
-            m_door.OpenDoors(1f);
-
-            LeavingFloor?.Invoke();
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            m_isPlayerInside = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            m_isPlayerInside = false;
         }
     }
 
     public void Interaction(bool isPanelInside)
     {
         
-        if (m_canBeInteractedWith)
+        /*if (m_canBeInteractedWith)
         {
             m_canBeInteractedWith = false;
             m_timeElapsedSinceLastInteraction = 0f;
-
+        */
 
             if (TESTING && isPanelInside)
             {
@@ -117,7 +167,6 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 
             if (isPanelInside)
             {
-                Debug.Log("Interacting with panel Inside");
                 if (currentPanelParam >= 0 && currentPanelParam <= 9)
                 {
                     Control(currentPanelParam);
@@ -128,16 +177,14 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
             }
             else if (outsideButtonCanOpen)
             {
-                Debug.Log("Interacting with panel Outside");
                 Control();
             }
-        }
+        //}
     }
 
     public void AddButton(int floorIndex)
     {
         m_buttons[floorIndex].SetActive(true);
-        m_currentTargetFloorSceneName = m_buttons[floorIndex].GetComponent<ElevatorButton>().targetFloorSceneName;
         ElevatorButtonAdded?.Invoke();
     }
 
@@ -174,13 +221,24 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
                 }
                 break;
             case "Open":
-
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.OpenDoors(0f);
                 break;
             case "Close":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.CloseDoors(0f);
                 break;
             case "OpenClose":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(0f);
@@ -198,13 +256,24 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         switch (m_currentState)
         {
             case "Open":
-
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.OpenDoors(sequenceParam, soundParam);
                 break;
             case "Close":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.CloseDoors(sequenceParam, soundParam);
                 break;
             case "OpenClose":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(sequenceParam, soundParam);
@@ -222,13 +291,24 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         switch (m_currentState)
         {
             case "Open":
-
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.OpenDoors(openSequenceParam, openSoundParam);
                 break;
             case "Close":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 m_door.CloseDoors(closeSequenceParam, closeSoundParam);
                 break;
             case "OpenClose":
+                if (m_door.isSequencePlaying)
+                {
+                    return;
+                }
                 if (m_door.isOpened)
                 {
                     m_door.CloseDoors(closeSequenceParam, closeSoundParam);
@@ -260,6 +340,8 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         else if (TESTING_Counter == 8)
         {
             CurrentState = "LeaveFloor";
+            //debug current state and value of canLeaveFloor
+            Debug.Log("Current State: " + CurrentState + " canLeaveFloor: " + m_floorManager.canLeaveFloor);
             Control(3);
             CurrentState = "OpenClose";
         }
