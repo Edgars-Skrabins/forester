@@ -9,6 +9,7 @@ public class PlayerInteraction
     private GameObject currentInteractableObject;
     private Outline targetOutline;
     private IInteractable currentTarget;
+    private Interactable currentInteractable;
 
     [SerializeField] private InputActionReference lookAction;
 
@@ -22,60 +23,30 @@ public class PlayerInteraction
                 interactableMask
             ))
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            targetOutline = hit.collider.GetComponent<Outline>();
-            EnableTargetOutline(targetOutline);
-            DisableUnfocusedOutline(hit.collider.gameObject);
-            if (interactable != null)
+            hit.collider.TryGetComponent(out Interactable hitInteractable);
+
+            if (hitInteractable != null)
             {
-                if (currentTarget != interactable)
+                // If looking at a new interactable, disable the old one
+                if (currentInteractable != hitInteractable)
                 {
-                    currentTarget = interactable;
+                    if (currentInteractable != null)
+                        currentInteractable.DisableOutline();
+
+                    currentInteractable = hitInteractable;
+                    currentInteractable.EnableOutline();
                 }
 
-                if (lookAction.action.IsPressed())
+                if (lookAction.action.triggered)
                 {
-                    interactable.Interact();
+                    currentInteractable.Interact();
                 }
-
-                return;
-            }
-        } else if(currentInteractableObject != null)
-        {
-            DisableUnfocusedOutline(null);
-        }
-
-        if (currentTarget != null)
-        {
-            currentTarget = null;
-        }
-    }
-    
-    private void DisableUnfocusedOutline(GameObject newFocus)
-    {
-        if(currentInteractableObject != null)
-        {
-            Debug.Log("Checking Outline Removal Condition");
-            if (currentInteractableObject != newFocus)
-            {
-                DisableTargetOutline(currentInteractableObject.GetComponent<Outline>());
             }
         }
-        currentInteractableObject = newFocus;
-    }
-    private void EnableTargetOutline(Outline outline)
-    {
-        if(outline != null)
+        else if (currentInteractable != null)
         {
-            outline.OutlineMode = Outline.Mode.OutlineVisible;
-        }
-    }
-    private void DisableTargetOutline(Outline outline)
-    {
-        Debug.Log("Removing Outline");
-        if (outline != null)
-        {
-            outline.OutlineMode = Outline.Mode.OutlineHidden;
+            currentInteractable.DisableOutline();
+            currentInteractable = null;
         }
     }
 }
