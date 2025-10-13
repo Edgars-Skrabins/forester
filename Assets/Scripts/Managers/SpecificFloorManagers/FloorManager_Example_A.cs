@@ -47,17 +47,17 @@ public class FloorManager_Example_A : FloorManager
                     ScriptedEvents(EventID); 
                 });
                 break;
-            case 3:
-                Debug.Log("Event 3 triggered.");
+            case 4:
+                Debug.Log("Event 4 triggered.");
                 elevatorHandler.ElevatorButtonAdded.AddListenerOnce(() => { EventID = 5;
                     canLeaveFloor = true;
                     elevatorHandler.SetState(ElevatorState.LeaveFloor);
                 });
                 break;
-            case 4:
-                Debug.Log("Event 4 triggered.");
+            case 3:
+                Debug.Log("Event 3 triggered.");
                 elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => {
-                    EventID = 3;
+                    EventID = 4;
                     elevatorHandler.SetState(ElevatorState.AddButtonAndLeave);
                     //ScriptedEvents(EventID);
                 });

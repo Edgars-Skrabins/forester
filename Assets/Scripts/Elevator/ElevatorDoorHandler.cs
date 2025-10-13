@@ -16,7 +16,9 @@ public class ElevatorDoorHandler : MonoBehaviour
     
     [SerializeField] private Vector3 m_door1EndPos;
     [SerializeField] private Vector3 m_door2EndPos;
-    
+    private Sequence sequence;
+
+
     private void Awake() 
     {
         m_ElevatorDoorOpened = new UnityEvent();
@@ -45,7 +47,7 @@ public class ElevatorDoorHandler : MonoBehaviour
         if (!isOpened)
         {
             isSequencePlaying = true;
-            Sequence sequence = DOTween.Sequence();
+            sequence = DOTween.Sequence();
             sequence.InsertCallback(delay, () => { AudioManager.Instance.PlaySound("SFX_Elevator_Door_Open", transform.position); });
             sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f * 2).SetEase(Ease.InCubic));
             sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f * 2).SetEase(Ease.InCubic));
@@ -58,6 +60,12 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = true;
             });
+        } else if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                OpenDoors(delay);
+            });
         }
     }
 
@@ -67,7 +75,7 @@ public class ElevatorDoorHandler : MonoBehaviour
         if (isOpened)
         {
             isSequencePlaying = true;
-            Sequence sequence = DOTween.Sequence();
+            sequence = DOTween.Sequence();
 
             sequence.InsertCallback(delay, () => { AudioManager.Instance.PlaySound("SFX_Elevator_Door_Close", transform.position); });
             sequence.Insert(delay + 0f, m_door1.DOLocalMove(m_door1StartPos, 1.2f * 2).SetEase(Ease.InCubic));
@@ -81,13 +89,19 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = false;
             });
+        } else if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                CloseDoors(delay);
+            });
         }
     }
-    public void OpenDoors(Sequence sequence, string soundName)
+    public void OpenDoors(Sequence sequence) // Sound should be played in the sequence itself
     {
         if (!isOpened)
         {
-            isSequencePlaying = true; // Sound should be played in the sequence itself
+            isSequencePlaying = true; 
             sequence.Play();
             sequence.OnComplete(() =>
             {
@@ -95,19 +109,32 @@ public class ElevatorDoorHandler : MonoBehaviour
                 isSequencePlaying = false;
                 isOpened = true;
             });
+        } else if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                OpenDoors(sequence);
+            });
         }
     }
-    public void CloseDoors(Sequence sequence, string soundName)
+    public void CloseDoors(Sequence sequence) // Sound should be played in the sequence itself
     {
         if (!isOpened)
         {
-            isSequencePlaying = true; // Sound should be played in the sequence itself
+            isSequencePlaying = true;
             sequence.Play();
             sequence.OnComplete(() =>
             {
                 m_ElevatorDoorClosed?.Invoke();
                 isSequencePlaying = false;
                 isOpened = false;
+            });
+        }
+        else if (isSequencePlaying)
+        {
+            sequence.OnComplete(() =>
+            {
+                CloseDoors(sequence);
             });
         }
     }
