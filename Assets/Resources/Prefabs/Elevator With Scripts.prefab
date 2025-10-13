@@ -1180,6 +1180,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isOpened: 0
+  isSequencePlaying: 0
   m_door1EndPos: {x: 0.416, y: 1.0014822, z: 0}
   m_door2EndPos: {x: 0.091, y: 0.02930224, z: -0.9586498}
 --- !u!114 &5874367253476002908
@@ -1194,10 +1195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f3f21764249204a85a3f0c7f3eefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanelHandler
-  m_floorManager: {fileID: 0}
-  outsideButtonCanOpen: 1
+  m_dontDestroyOnLoad: 0
   m_currentState: Open
-  currentPanelParam: -10
+  m_floorManager: {fileID: 0}
   m_isPlayerInside: 0
   m_buttonPanel: {fileID: 6888959803734689208}
   m_outsideButtonPanel: {fileID: 0}
@@ -1219,9 +1219,17 @@ MonoBehaviour:
   ElevatorButtonPressed:
     m_PersistentCalls:
       m_Calls: []
+  PlayerLeftElevator:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerEnteredElevator:
+    m_PersistentCalls:
+      m_Calls: []
   LeavingFloor:
     m_PersistentCalls:
       m_Calls: []
+  outsideButtonCanOpen: 1
+  currentPanelParam: -10
 --- !u!65 &4900221669783020864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1597,6 +1605,8 @@ GameObject:
   - component: {fileID: 6533870734095542879}
   - component: {fileID: 2617013219414737603}
   - component: {fileID: 7989555189702640268}
+  - component: {fileID: 2185088026042573081}
+  - component: {fileID: 1760128184273810706}
   m_Layer: 0
   m_Name: LightCube
   m_TagString: Untagged
@@ -1697,6 +1707,126 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &2185088026042573081
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606770506218928306}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 4c536648b345a114ab375dd710fc9b53, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1760128184273810706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606770506218928306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e9112a836ebaa4291e477b44f3e321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightController
+  targetLight: {fileID: 5364590125608080968}
+  minIntensity: 0.2
+  maxIntensity: 1
+  minFlickerInterval: 0.05
+  maxFlickerInterval: 0.2
+  buzzAudio: {fileID: 2185088026042573081}
+  buzzVolume: 0.338
+  buzzPitchVariance: 0.05
+  useDoTween: 1
+  tweenDuration: 0.05
+  tweenEase: 4
 --- !u!1 &6888959803734689208
 GameObject:
   m_ObjectHideFlags: 0
