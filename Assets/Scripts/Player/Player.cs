@@ -12,6 +12,7 @@ public class Player : Singleton<Player>
 
     private void Start()
     {
+        playerInteraction?.Initialize();
         playerFootStep?.Initialize();
         playerFlashlight?.Initialize(this);
     }

@@ -6,13 +6,16 @@ public class PlayerInteraction
 {
     [SerializeField] private float interactRange = 3f;
     [SerializeField] private LayerMask interactableMask;
-    private GameObject currentInteractableObject;
     private Outline targetOutline;
-    private IInteractable currentTarget;
     private Interactable currentInteractable;
 
     [SerializeField] private InputActionReference interactAction;
 
+    public void Initialize()
+    {
+        interactAction.action.performed += ctx => currentInteractable?.Interact();
+    }
+    
     public void LookForInteraction()
     {
         if (Physics.Raycast(
@@ -36,10 +39,10 @@ public class PlayerInteraction
                     currentInteractable.EnableOutline();
                 }
 
-                if (interactAction.action.triggered == true)
-                {
-                    currentInteractable.Interact();
-                }
+                // if (interactAction.action.triggered == true)
+                // {
+                //     currentInteractable.Interact();
+                // }
             }
             else if (currentInteractable != hitInteractable && currentInteractable != null)
             {
