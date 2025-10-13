@@ -35,7 +35,13 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         ElevatorButtonAdded = new UnityEvent();
         ElevatorButtonPressed = new UnityEvent();
         LeavingFloor = new UnityEvent();
-        DontDestroyOnLoad(this);
+        if(GameObject.FindGameObjectsWithTag("Elevator").Length > 1 && this.gameObject.scene.buildIndex != -1)
+        {
+            Destroy(this, 0f);
+        } else
+        { DontDestroyOnLoad(this); }
+        DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
+
 
     }
 
@@ -50,7 +56,7 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
         }
         catch
         {
-            Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene.");
+            Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
         }
     }
 
@@ -62,25 +68,34 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
 
     public IEnumerator LeaveFloor(int nextFloorIndex)
     {
-        m_door.CloseDoors(0f);
-        //Intermission elevator music
-        Scene scene = SceneManager.GetActiveScene();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
-        asyncLoad.allowSceneActivation = true;
         
-        while (!asyncLoad.isDone)
+        if (m_door.isOpened)
         {
-            yield return null;
+            m_door.CloseDoors(0f);
+            TESTING_Counter--;
         }
-        
-        SceneManager.UnloadSceneAsync(scene);
-        
-        m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
-        m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-        m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
-        m_door.OpenDoors(0f);
-        
-        LeavingFloor?.Invoke();
+        else
+        {
+            //Intermission elevator music
+            Scene scene = SceneManager.GetActiveScene();
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
+            asyncLoad.allowSceneActivation = true;
+
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            SceneManager.UnloadSceneAsync(scene);
+
+            m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
+            m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
+            m_floorManager.elevatorOutsidePanel.GetComponent<ElevatorButtonPanelInteractable>().m_panel = this;
+            m_door.OpenDoors(1f);
+
+            LeavingFloor?.Invoke();
+
+        }
     }
 
     public void Interaction(bool isPanelInside)
@@ -229,14 +244,14 @@ public class ElevatorFloorsButtonPanelHandler : MonoBehaviour
     public void Testing()
     {
         TESTING_Counter++;
-        if (TESTING_Counter == 3)
+        if (TESTING_Counter == 2)
         {
             m_floorManager.playerHasButton = true;
             CurrentState = "AddButton";
             Control(5);
             CurrentState = "OpenClose";
         }
-        else if (TESTING_Counter == 4)
+        else if (TESTING_Counter == 3)
         {
             CurrentState = "LeaveFloor";
             Control(5);
