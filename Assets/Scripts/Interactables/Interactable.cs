@@ -20,7 +20,7 @@ public abstract class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         if(CallInteracted) { interacted?.Invoke(); }
-        if (DestroyOnInteract) { Destroy(this); }
+        if (DestroyOnInteract) { Destroy(this.gameObject, 0.1f); }
     }
     
     public void EnableOutline()

@@ -12,6 +12,7 @@ public class ElevatorDoorHandler : MonoBehaviour
     public bool isSequencePlaying = false;
     private Vector3 m_door1StartPos;
     private Vector3 m_door2StartPos;
+    [SerializeField] private Collider extraCollider; 
     
     [SerializeField] private Vector3 m_door1EndPos;
     [SerializeField] private Vector3 m_door2EndPos;
@@ -40,6 +41,7 @@ public class ElevatorDoorHandler : MonoBehaviour
     
     public void OpenDoors(float delay)
     {
+        extraCollider.enabled = false;
         if (!isOpened)
         {
             isSequencePlaying = true;
@@ -61,6 +63,7 @@ public class ElevatorDoorHandler : MonoBehaviour
 
     public void CloseDoors(float delay)
     {
+        extraCollider.enabled = true;
         if (isOpened)
         {
             isSequencePlaying = true;
