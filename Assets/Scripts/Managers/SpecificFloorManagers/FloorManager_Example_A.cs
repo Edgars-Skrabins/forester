@@ -23,7 +23,7 @@ public class FloorManager_Example_A : FloorManager
             case 0:
                 Debug.Log("Event: Open elevator doors 2 seconds after loading the scene.");
                 elevatorHandler.SetState(ElevatorState.Open);
-                elevatorHandler.PlayerLeftElevator.AddListenerOnce(() => { 
+                elevatorHandler.PlayerLeftElevator.AddListenerOnce(() => { // Condition to move to the next event
                     EventID = 2; 
                     ScriptedEvents(EventID); });
                 elevatorHandler.Control(2f);           

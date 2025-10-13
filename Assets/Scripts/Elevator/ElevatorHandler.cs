@@ -173,10 +173,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
     public void Control(float delay, int param = 0)
     {
-        if (door.isSequencePlaying)
-        {
-            return;
-        }
         switch (_currentState){
             case ElevatorState.AddButton:
                 if (m_floorManager.playerHasButton)
@@ -218,10 +214,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     }
     public void Control( int param = 0)
     {
-        if (door.isSequencePlaying)
-        {
-            return;
-        }
         switch (_currentState)
         {
             case ElevatorState.AddButton:
@@ -264,10 +256,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     }
     public void Control(Sequence sequenceParam)
     {
-        if (door.isSequencePlaying)
-        {
-            return;
-        }
         switch (_currentState)
         {
             case ElevatorState.Open:
@@ -291,10 +279,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     }
     public void Control(Sequence openSequenceParam,  Sequence closeSequenceParam)
     {
-        if (door.isSequencePlaying)
-        {
-            return;
-        }
         switch (_currentState)
         {
             case ElevatorState.Open:
