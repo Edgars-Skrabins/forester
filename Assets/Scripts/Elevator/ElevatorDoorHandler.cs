@@ -46,11 +46,11 @@ public class ElevatorDoorHandler : MonoBehaviour
         {
             isSequencePlaying = true;
             Sequence sequence = DOTween.Sequence();
-
+            sequence.InsertCallback(delay, () => { AudioManager.Instance.PlaySound("SFX_Elevator_Door_Open", transform.position); });
             sequence.Insert(delay + .2f, m_door1.DOLocalMove(m_door1EndPos, 1.2f * 2).SetEase(Ease.InCubic));
             sequence.Insert(delay + 0f, m_door2.DOLocalMove(m_door2EndPos, 1.3f * 2).SetEase(Ease.InCubic));
             sequence.Insert(delay + 1.35f * 2, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
-            AudioManager.Instance.PlaySound("SFX_Elevator_Door_Open", transform.position);
+            
             sequence.Play();
             sequence.OnComplete(() =>
             {
@@ -69,11 +69,11 @@ public class ElevatorDoorHandler : MonoBehaviour
             isSequencePlaying = true;
             Sequence sequence = DOTween.Sequence();
 
+            sequence.InsertCallback(delay, () => { AudioManager.Instance.PlaySound("SFX_Elevator_Door_Close", transform.position); });
             sequence.Insert(delay + 0f, m_door1.DOLocalMove(m_door1StartPos, 1.2f * 2).SetEase(Ease.InCubic));
             sequence.Insert(delay + 0.2f, m_door2.DOLocalMove(m_door2StartPos, 1.3f * 2).SetEase(Ease.InCubic));
             sequence.Insert(delay + 1.45f * 2, transform.DOShakePosition(0.1f, strength: 0.01f, vibrato: 2, fadeOut: true));
 
-            AudioManager.Instance.PlaySound("SFX_Elevator_Door_Close", transform.position);
             sequence.Play();
             sequence.OnComplete(() =>
             {
@@ -87,8 +87,7 @@ public class ElevatorDoorHandler : MonoBehaviour
     {
         if (!isOpened)
         {
-            isSequencePlaying = true;
-            AudioManager.Instance.PlaySound(soundName, transform.position);
+            isSequencePlaying = true; // Sound should be played in the sequence itself
             sequence.Play();
             sequence.OnComplete(() =>
             {
@@ -102,8 +101,7 @@ public class ElevatorDoorHandler : MonoBehaviour
     {
         if (!isOpened)
         {
-            isSequencePlaying = true;
-            AudioManager.Instance.PlaySound(soundName, transform.position);
+            isSequencePlaying = true; // Sound should be played in the sequence itself
             sequence.Play();
             sequence.OnComplete(() =>
             {
