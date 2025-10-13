@@ -43,7 +43,7 @@ public class PlayerInteraction
                     currentInteractable.Interact();
                 }
             }
-            if (currentInteractable != hitInteractable && currentInteractable != null)
+            else if (currentInteractable != hitInteractable && currentInteractable != null)
             {
                 currentInteractable.DisableOutline();
                 currentInteractable = null;
