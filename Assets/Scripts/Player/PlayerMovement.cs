@@ -5,10 +5,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement
 {
     [SerializeField] private CharacterController controller;
-    [SerializeField] private float speed = 3f;
+    [SerializeField] private float walkingSpeed = 3f;
+    [SerializeField] private float sprintMultiplier = 2f;
     [SerializeField] private float gravityMultiplier = 10f;
     [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference sprintAction;
     
+    private float speed = 3f;
     private Vector3 velocity;
 
     public void Move()
@@ -21,6 +24,14 @@ public class PlayerMovement
 
         if (input.sqrMagnitude > 0.01f)
         {
+            if (sprintAction != null && sprintAction.action.IsPressed())
+            {
+                speed = walkingSpeed * sprintMultiplier;
+            }
+            else
+            {
+                speed = walkingSpeed;
+            }
             Vector3 move = controller.transform.TransformDirection(input.normalized) * speed;
             controller.Move(move * Time.deltaTime);
         }

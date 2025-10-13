@@ -76,9 +76,11 @@ MonoBehaviour:
   m_dontDestroyOnLoad: 0
   playerMovement:
     controller: {fileID: 2340732521861446512}
-    speed: 2
+    walkingSpeed: 1.7
+    sprintMultiplier: 2
     gravityMultiplier: 10
     moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   playerLook:
     lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     playerTransform: {fileID: 763820874347641846}

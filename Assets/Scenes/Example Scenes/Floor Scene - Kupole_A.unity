@@ -2081,6 +2081,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7531993757264386503, guid: 1712b64e569ae43478fbc51d56567b22, type: 3}
+      propertyPath: playerMovement.sprintAction
+      value: 
+      objectReference: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7531993757264386503, guid: 1712b64e569ae43478fbc51d56567b22, type: 3}
+      propertyPath: playerMovement.walkingSpeed
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
