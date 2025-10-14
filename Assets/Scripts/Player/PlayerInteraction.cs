@@ -19,6 +19,17 @@ public class PlayerInteraction
 
     public void HandleInteractions()
     {
+        try
+        {
+            if (GameManager.Instance.gameState != GameState.Playing)
+            {
+                return;
+            }
+        }
+        catch
+        {
+            Debug.LogWarning("No GameManager In Scene");
+        }
         if (interactAction.action.WasPerformedThisFrame() && inHandTransform.childCount > 0)
         {
             currentPickable = inHandTransform.GetComponentInChildren<Pickable>();
