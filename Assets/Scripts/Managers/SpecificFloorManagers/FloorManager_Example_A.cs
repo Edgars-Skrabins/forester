@@ -24,14 +24,18 @@ public class FloorManager_Example_A : FloorManager
                 Debug.Log("Event: Open elevator doors 2 seconds after loading the scene.");
                 elevatorHandler.SetState(ElevatorState.Open);
                 elevatorHandler.PlayerLeftElevator.AddListenerOnce(() => { // Condition to move to the next event
-                    EventID = 2; 
+                    EventID = 1; 
                     ScriptedEvents(EventID); });
                 elevatorHandler.Control(2f);           
                 break;
             case 1:
+                Debug.Log("Event 1 triggered.");
+                elevatorHandler.SetState(ElevatorState.Close);
+                elevatorHandler.Control();
                 Debug.Log("Wait for button pickup.");
-                ScriptedObjectReferences[0].GetComponent<PickupubleButtonInteractable>().interacted.AddListenerOnce(() => 
-                { EventID = 4;
+                ScriptedObjectReferences[0].GetComponent<PickupubleButtonInteractable>().interacted.AddListenerOnce(() =>
+                {
+                    EventID = 2;
                     playerHasButton = true;
                     elevatorHandler.CurrentSelectedFloor = ScriptedObjectReferences[0].GetComponent<PickupubleButtonInteractable>().buttonIndex;
                     elevatorHandler.SetState(ElevatorState.OpenClose);
@@ -40,26 +44,17 @@ public class FloorManager_Example_A : FloorManager
                 break;
             case 2:
                 Debug.Log("Event 2 triggered.");
-                elevatorHandler.SetState(ElevatorState.Close);
-                elevatorHandler.Control();
-                elevatorHandler.door.m_ElevatorDoorClosed.AddListenerOnce(() => { 
-                    EventID = 1; 
-                    ScriptedEvents(EventID); 
-                });
-                break;
-            case 4:
-                Debug.Log("Event 4 triggered.");
-                elevatorHandler.ElevatorButtonAdded.AddListenerOnce(() => { EventID = 5;
-                    canLeaveFloor = true;
-                    elevatorHandler.SetState(ElevatorState.LeaveFloor);
+                elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => {
+                    //EventID = 3;
+                    elevatorHandler.SetState(ElevatorState.AddButtonAndLeave);
+                    //ScriptedEvents(EventID);
                 });
                 break;
             case 3:
                 Debug.Log("Event 3 triggered.");
-                elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => {
-                    EventID = 4;
-                    elevatorHandler.SetState(ElevatorState.AddButtonAndLeave);
-                    //ScriptedEvents(EventID);
+                elevatorHandler.ElevatorButtonAdded.AddListenerOnce(() => { EventID = 3;
+                    canLeaveFloor = true;
+                    elevatorHandler.SetState(ElevatorState.LeaveFloor);
                 });
                 break;
             default:

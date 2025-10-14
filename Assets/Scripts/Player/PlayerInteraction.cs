@@ -13,9 +13,12 @@ public class PlayerInteraction
 
     public void Initialize()
     {
-        interactAction.action.performed += ctx => currentInteractable?.Interact();
+      /*interactAction.action.performed += ctx => 
+        { 
+            if (currentInteractable.DestroyOnInteract) { currentInteractable = null; currentInteractable?.Interact(); } else { currentInteractable?.Interact(); }
+        };*/
     }
-    
+
     public void LookForInteraction()
     {
         if (Physics.Raycast(
@@ -39,15 +42,15 @@ public class PlayerInteraction
                     currentInteractable.EnableOutline();
                 }
 
-                // if (interactAction.action.triggered == true)
-                // {
-                //     currentInteractable.Interact();
-                // }
+                if (interactAction.action.IsPressed() == true)
+                {
+                    currentInteractable.Interact();
+                }
             }
             else if (currentInteractable != hitInteractable && currentInteractable != null)
             {
                 currentInteractable.DisableOutline();
-                currentInteractable = null;
+                currentInteractable = null; 
             }
         }
         else if (currentInteractable != null)
