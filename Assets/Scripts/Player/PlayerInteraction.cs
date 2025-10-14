@@ -6,9 +6,11 @@ public class PlayerInteraction
 {
     [SerializeField] private float interactRange = 3f;
     [SerializeField] private LayerMask interactableMask;
+    [SerializeField] private Transform inHandTransform;
     private Outline targetOutline;
     private Interactable currentInteractable;
-
+    private Pickable currentPickable;
+    
     [SerializeField] private InputActionReference interactAction;
 
     public void Initialize()
@@ -19,15 +21,24 @@ public class PlayerInteraction
         };*/
     }
 
-    public void LookForInteraction()
+    public void HandleInteractions()
     {
-        if (Physics.Raycast(
-                Camera.main.transform.position,
-                Camera.main.transform.forward,
-                out RaycastHit hit,
-                interactRange,
-                interactableMask
-            ))
+        if (interactAction.action.WasPerformedThisFrame() && inHandTransform.childCount > 0)
+        {
+            currentPickable = inHandTransform.GetComponentInChildren<Pickable>();
+            if (currentPickable != null)
+            {
+                currentPickable.Interact();
+                Debug.Log(currentPickable.name + " was dropped!");
+            }
+        }
+        else if (Physics.Raycast(
+                      Camera.main.transform.position,
+                      Camera.main.transform.forward,
+                      out RaycastHit hit,
+                      interactRange,
+                      interactableMask
+                  ))
         {
             hit.collider.TryGetComponent(out Interactable hitInteractable);
 
@@ -42,7 +53,7 @@ public class PlayerInteraction
                     currentInteractable.EnableOutline();
                 }
 
-                if (interactAction.action.IsPressed() == true)
+                if (interactAction.action.WasPerformedThisFrame())
                 {
                     currentInteractable.Interact();
                 }

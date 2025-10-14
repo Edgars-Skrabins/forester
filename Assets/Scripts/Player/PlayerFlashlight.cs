@@ -6,6 +6,7 @@ using System.Collections;
 public class PlayerFlashlight
 {
     [Header("Flashlight Settings")]
+    [SerializeField] private Transform flashlightModel;
     [SerializeField] private Light flashlightLight;
     [SerializeField] private InputActionReference toggleAction;
     [SerializeField] private InputActionReference rechargeBatteryAction;
@@ -30,8 +31,8 @@ public class PlayerFlashlight
         coroutineRunner = runner;
         currentBattery = maxBattery;
         flashlightLight.enabled = false;
+        flashlightModel.gameObject.SetActive(false);
         flashlightStartingIntensity = flashlightLight.intensity;
-
         toggleAction.action.performed += ctx => ToggleFlashlight();
         rechargeBatteryAction.action.performed += ctx => RechargeFlashlight();
     }
@@ -85,7 +86,7 @@ public class PlayerFlashlight
         if (currentBattery <= 0f) return;
         isOn = true;
         flashlightLight.enabled = true;
-
+        flashlightModel.gameObject.SetActive(true);
         AudioManager.Instance.PlaySound("SFX_Flashlight_On");
     }
 
@@ -93,7 +94,7 @@ public class PlayerFlashlight
     {
         isOn = false;
         flashlightLight.enabled = false;
-
+        flashlightModel.gameObject.SetActive(false);
         if (flickerRoutine != null)
         {
             coroutineRunner.StopCoroutine(flickerRoutine);

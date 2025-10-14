@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Outline))]
 public abstract class Interactable : MonoBehaviour
 {
-    private Outline outline;
+    [SerializeField] private Outline outline;
     public UnityEvent interacted;
     [Space]
     [Header("Settings:")]
     public bool DestroyOnInteract = false;
     public bool CallInteracted = false;
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         if (CallInteracted) { interacted = new UnityEvent(); }
         if (outline == null) { outline = GetComponent<Outline>(); }

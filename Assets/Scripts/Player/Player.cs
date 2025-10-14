@@ -9,7 +9,9 @@ public class Player : Singleton<Player>
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private PlayerFootStep playerFootStep;
     [SerializeField] private PlayerFlashlight playerFlashlight;
-
+    [SerializeField] private Transform pickUpParent;
+    public Transform PickUpParent => pickUpParent;
+    
     private void Start()
     {
         playerInteraction?.Initialize();
@@ -21,7 +23,7 @@ public class Player : Singleton<Player>
     {
         playerMovement?.Move();
         playerLook?.Look();
-        playerInteraction?.LookForInteraction();
+        playerInteraction?.HandleInteractions();
         playerFootStep?.HandleFootsteps();
         playerFlashlight?.Update();
     }
