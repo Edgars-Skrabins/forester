@@ -10,12 +10,6 @@ public class Player : Singleton<Player>
     [SerializeField] private Transform pickUpParent;
     public Transform PickUpParent => pickUpParent;
     
-    private void Awake()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     private void Start()
     {
         playerInteraction?.Initialize();
