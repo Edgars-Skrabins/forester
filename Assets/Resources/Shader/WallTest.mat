@@ -67,7 +67,7 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _DetailMetallness: 0
     - _DetailSmoothness: 0
-    - _DirtScale: 0.19
+    - _DirtScale: 0.23
     - _DirtStrength: 0.463
     - _Metallness: 0
     - _QueueControl: 0

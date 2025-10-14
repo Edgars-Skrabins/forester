@@ -15,10 +15,6 @@ public class PlayerInteraction
 
     public void Initialize()
     {
-      /*interactAction.action.performed += ctx => 
-        { 
-            if (currentInteractable.DestroyOnInteract) { currentInteractable = null; currentInteractable?.Interact(); } else { currentInteractable?.Interact(); }
-        };*/
     }
 
     public void HandleInteractions()
