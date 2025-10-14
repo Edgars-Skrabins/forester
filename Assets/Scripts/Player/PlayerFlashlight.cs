@@ -69,7 +69,7 @@ public class PlayerFlashlight
             TurnOn();
     }
 
-    private void RechargeFlashlight()
+    public void RechargeFlashlight()
     {
         if (flickerRoutine != null)
         {

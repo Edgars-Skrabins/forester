@@ -27,4 +27,9 @@ public class Player : Singleton<Player>
         playerFootStep?.HandleFootsteps();
         playerFlashlight?.Update();
     }
+
+    public PlayerFlashlight GetPlayerFlashlight()
+    {
+        return playerFlashlight;
+    }
 }
