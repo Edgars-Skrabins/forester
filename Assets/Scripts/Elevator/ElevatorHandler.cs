@@ -39,6 +39,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     public UnityEvent PlayerLeftElevator;
     public UnityEvent PlayerEnteredElevator;
     public UnityEvent LeavingFloor;
+    
     public bool outsideButtonCanOpen = true;
     [SerializeField] private int m_currentSelectedFloor = -10;
     public int CurrentSelectedFloor { get { return m_currentSelectedFloor; } set { m_currentSelectedFloor = value; } }
@@ -62,6 +63,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         {
             Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
         }
+        
         m_floorManager.ScriptedEvents(0);
     }
     
