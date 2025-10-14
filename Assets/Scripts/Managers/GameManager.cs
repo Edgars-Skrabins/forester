@@ -76,4 +76,9 @@ public class GameManager : Singleton<GameManager>
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
