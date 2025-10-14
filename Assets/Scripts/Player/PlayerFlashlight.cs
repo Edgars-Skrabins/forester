@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using TMPro;
 
 [System.Serializable]
 public class PlayerFlashlight
@@ -15,7 +16,8 @@ public class PlayerFlashlight
     [SerializeField] private float lowBatteryThreshold = 15f;
     [SerializeField] private float flickerIntensity = 0.2f;
     [SerializeField] private float flickerSpeed = 0.1f;
-
+    [SerializeField] private TMP_Text flashlightBatteryText;
+    
     private float flashlightStartingIntensity; 
     
     private bool isOn;
@@ -35,6 +37,15 @@ public class PlayerFlashlight
         flashlightStartingIntensity = flashlightLight.intensity;
         toggleAction.action.performed += ctx => ToggleFlashlight();
         rechargeBatteryAction.action.performed += ctx => RechargeFlashlight();
+        UpdateBatteryUI();
+    }
+    
+    private void UpdateBatteryUI()
+    {
+        if (flashlightBatteryText != null)
+        {
+            flashlightBatteryText.text = $"{Mathf.CeilToInt(currentBattery)}%";
+        }
     }
 
     public void Update()
@@ -59,6 +70,8 @@ public class PlayerFlashlight
             flickerRoutine = null;
             flashlightLight.intensity = 1f;
         }
+
+        UpdateBatteryUI();
     }
 
     private void ToggleFlashlight()
