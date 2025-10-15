@@ -14,7 +14,7 @@ public abstract class Interactable : MonoBehaviour
         if (CallInteracted) { interacted = new UnityEvent(); }
         if (outline == null) { outline = GetComponent<Outline>(); }
         outline.OutlineMode = Outline.Mode.OutlineVisible;
-        outline.OutlineWidth = 10f;
+        outline.OutlineWidth = 20f;
         outline.OutlineColor = Color.red;
         DisableOutline();
     }
