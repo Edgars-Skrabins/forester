@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,7 @@ public class PlayerInteraction
     private Interactable currentInteractable;
     private Pickable currentPickable;
     
+    [SerializeField] private TMP_Text interactionDescription;
     [SerializeField] private InputActionReference interactAction;
 
     public void Initialize()
@@ -47,6 +49,7 @@ public class PlayerInteraction
 
                     currentInteractable = hitInteractable;
                     currentInteractable.EnableOutline();
+                    interactionDescription.text = currentInteractable.GetInteractionDescription();
                 }
 
                 if (interactAction.action.WasPerformedThisFrame())
@@ -57,12 +60,14 @@ public class PlayerInteraction
             else if (currentInteractable != hitInteractable && currentInteractable != null)
             {
                 currentInteractable.DisableOutline();
+                interactionDescription.text = "";
                 currentInteractable = null; 
             }
         }
         else if (currentInteractable != null)
         {
             currentInteractable.DisableOutline();
+            interactionDescription.text = "";
             currentInteractable = null;
         }
     }

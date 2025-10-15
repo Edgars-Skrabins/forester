@@ -181,6 +181,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1934012976617274938, guid: 0692d4a026632b64eaa23cd7b7021f8f, type: 3}
   m_PrefabInstance: {fileID: 66416121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85376266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3783058433154273239, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
+  m_PrefabInstance: {fileID: 2610617622579593826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &121743483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,12 +402,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 5
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -543,12 +555,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 2
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -990,12 +1003,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 3
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -1198,12 +1212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef263bd1f8d4a2a89b01db292035c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unlockable
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 1442527322}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   target: {fileID: 280322982}
   targetVector: {x: 0, y: -90, z: 0}
   sfxOpenClipName: 
@@ -1893,12 +1908,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: Enter
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -1979,6 +1995,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455329965}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &516707951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8162926089333777159, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
+  m_PrefabInstance: {fileID: 2610617622579593826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &517057569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,12 +2553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 0
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -2739,12 +2767,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 8
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -2891,12 +2920,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 4
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -3284,12 +3314,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 1
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -3498,12 +3529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 6
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -3729,12 +3761,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: Clear
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -3943,12 +3976,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 7
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -4046,12 +4080,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c277fdc102e581249ae011b419f54bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Openable
-  outline: {fileID: 0}
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
+  outline: {fileID: 1038330658}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   target: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
   sfxOpenClipName: 
@@ -4080,6 +4115,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 46.37664, y: 52.572037, z: 17.015125}
   m_Center: {x: 0.0066080126, y: 12.415271, z: 0.4466879}
+--- !u!114 &1038330658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038330649}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1047980075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5290,6 +5343,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4202255180641523904, guid: 747d4607d60d88846adec8b600942afc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1038330653}
+    - targetCorrespondingSourceObject: {fileID: 4202255180641523904, guid: 747d4607d60d88846adec8b600942afc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1038330658}
   m_SourcePrefab: {fileID: 100100000, guid: 747d4607d60d88846adec8b600942afc, type: 3}
 --- !u!1 &1798462244
 GameObject:
@@ -5711,6 +5767,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3046737657011705930, guid: 6fdd763131adde84db30021548da1e8e, type: 3}
+      propertyPath: playerFlashlight.flashlightBatteryText
+      value: 
+      objectReference: {fileID: 516707951}
+    - target: {fileID: 3046737657011705930, guid: 6fdd763131adde84db30021548da1e8e, type: 3}
+      propertyPath: playerInteraction.interactionDescription
+      value: 
+      objectReference: {fileID: 85376266}
     - target: {fileID: 8230141722387064022, guid: 6fdd763131adde84db30021548da1e8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.3
@@ -5874,12 +5938,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb99ac1a1c404d4798d40a9800932770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeypadButton
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   buttonValue: 9
   keypadController: {fileID: 736139987}
   pressedPosition: {x: 0.055, y: 0, z: 0}
@@ -6028,22 +6093,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2193927010999655834, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: field of view
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2193927010999655834, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: far clip plane
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2193927010999655834, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2193927010999655834, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3000804256122781954, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6059,30 +6108,6 @@ PrefabInstance:
     - target: {fileID: 3000804256122781954, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.763402
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.1297998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933029614295005766, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5142349377360095676, guid: 85960d4d38b45e647b02bbd102f02260, type: 3}
       propertyPath: m_Name
