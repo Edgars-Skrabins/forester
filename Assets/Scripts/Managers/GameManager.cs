@@ -17,7 +17,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private UIManager uiManager;
     [SerializeField] private GameObject player;
 
-    [SerializeField] private bool canMove;
     [SerializeField] private InputActionReference pauseAction;
     private void Start()
     {

@@ -16,6 +16,9 @@ public class PlayerMovement
 
     public void Move()
     {
+        if(GameManager.Instance.gameState != GameState.Playing)
+            return;
+        
         if (moveAction == null || controller == null)
             return;
 

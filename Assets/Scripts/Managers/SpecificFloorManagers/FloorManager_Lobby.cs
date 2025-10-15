@@ -19,52 +19,25 @@ public class FloorManager_Lobby : FloorManager
     {
         switch (EventID)
         {
-            case -1:
-                break;
             case 0:
                 Debug.Log("Event: Open elevator doors 2 seconds after loading the scene.");
                 elevatorHandler.SetState(ElevatorState.Open);
-                elevatorHandler.PlayerLeftElevator.AddListenerOnce(() => { // Condition to move to the next event
+                elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => { // Condition to move to the next event
                     EventID = 1; 
                     ScriptedEvents(EventID); });
                 elevatorHandler.Control(2f);           
                 break;
             case 1:
-                Debug.Log("Event Close Elevator Doors and Turn On Lights.");
-                Sequence sequence = DOTween.Sequence();
+                Debug.Log("Event Close Elevator Doors and Allow Leaving Floor.");
                 elevatorHandler.SetState(ElevatorState.Close);
                 elevatorHandler.Control();
-                break;
-            case 2:
-                Debug.Log("Event 2 triggered.");
-                elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => {
-                    //EventID = 3;
-                    elevatorHandler.SetState(ElevatorState.AddButtonAndLeave);
-                    //ScriptedEvents(EventID);
-                });
-                break;
-            case 3:
-                Debug.Log("Event 3 triggered.");
-                elevatorHandler.ElevatorButtonAdded.AddListenerOnce(() => { EventID = 3;
-                    canLeaveFloor = true;
-                    elevatorHandler.SetState(ElevatorState.LeaveFloor);
-                });
+                elevatorHandler.SetState(ElevatorState.LeaveFloor);
+                elevatorHandler.CurrentSelectedFloor = 3; // Set to next floor (Officetel)
+                canLeaveFloor = true;
                 break;
             default:
                 Debug.LogWarning($"No scripted event found for EventID {EventID}.");
                 break;
         }
-    }
-
-    private void WaitForButtonPickup(int buttonReferenceIndex, int nextEventID)
-    {
-        Debug.Log("Wait for button pickup.");
-        ScriptedObjectReferences[buttonReferenceIndex].GetComponent<PickupubleButtonInteractable>().interacted.AddListenerOnce(() =>
-        {
-            playerHasButton = true;
-            elevatorHandler.CurrentSelectedFloor = ScriptedObjectReferences[buttonReferenceIndex].GetComponent<PickupubleButtonInteractable>().buttonIndex;
-            elevatorHandler.SetState(ElevatorState.OpenClose);
-            ScriptedEvents(nextEventID);
-        });
     }
 }

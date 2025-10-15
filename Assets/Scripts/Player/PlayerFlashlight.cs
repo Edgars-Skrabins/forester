@@ -17,7 +17,7 @@ public class PlayerFlashlight
     [SerializeField] private float flickerIntensity = 0.2f;
     [SerializeField] private float flickerSpeed = 0.1f;
     [SerializeField] private TMP_Text flashlightBatteryText;
-    
+    // [SerializeField] private GameObject flashlightIcon;
     private float flashlightStartingIntensity; 
     
     private bool isOn;
@@ -58,6 +58,7 @@ public class PlayerFlashlight
         }
 
         currentBattery -= drainRate * Time.deltaTime;
+        UpdateBatteryUI();
 
         if (currentBattery <= lowBatteryThreshold)
         {
@@ -71,7 +72,6 @@ public class PlayerFlashlight
             flashlightLight.intensity = 1f;
         }
 
-        UpdateBatteryUI();
     }
 
     private void ToggleFlashlight()
@@ -92,6 +92,7 @@ public class PlayerFlashlight
         currentBattery = maxBattery;
         flashlightLight.intensity = flashlightStartingIntensity;
         // flashlightLight.enabled = true;
+        UpdateBatteryUI();
     }
 
     private void TurnOn()
@@ -108,6 +109,7 @@ public class PlayerFlashlight
         isOn = false;
         flashlightLight.enabled = false;
         flashlightModel.gameObject.SetActive(false);
+        
         if (flickerRoutine != null)
         {
             coroutineRunner.StopCoroutine(flickerRoutine);
