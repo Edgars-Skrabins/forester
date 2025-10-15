@@ -106,12 +106,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8025d32075502b4cab767593a8568c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButtonPanelInteractable
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 0}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
   m_isInside: 1
 --- !u!65 &6188018688639037262
 BoxCollider:
@@ -601,7 +602,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   outsideButtonCanOpen: 1
-  m_currentSelectedFloor: -10
+  m_currentSelectedFloor: 6
 --- !u!65 &3673705992172356038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1605,7 +1606,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2210,7 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor Officetel
 --- !u!1 &7042869954299394830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,8 +2516,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4c536648b345a114ab375dd710fc9b53, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
-  m_Pitch: 1
+  m_Volume: 0.103
+  m_Pitch: 0.52
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2524,9 +2525,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 3
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2534,23 +2535,32 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.026015453
+      outSlope: -0.026015453
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.45518062
+      value: 0.36245728
+      inSlope: -0.8599866
+      outSlope: -0.8599866
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.16482905
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.002
+      inSlope: -0.002000801
+      outSlope: -0.002000801
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2612,8 +2622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightController
   targetLight: {fileID: 6318619854445128372}
-  minIntensity: 0.2
-  maxIntensity: 1
+  minIntensity: 0.1
+  maxIntensity: 0.5
   minFlickerInterval: 0.05
   maxFlickerInterval: 0.2
   buzzAudio: {fileID: 384071664652481826}

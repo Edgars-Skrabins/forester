@@ -4598,7 +4598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068f06dc2c0fe474ab1c7a01bdb7e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  m_dontDestroyOnLoad: 0
+  m_dontDestroyOnLoad: 1
   gameState: 0
   uiManager:
     mainMenuUI: {fileID: 3426067863261807339}
@@ -4606,7 +4606,6 @@ MonoBehaviour:
     settingsMenuUI: {fileID: 9121626501549519770}
     hudUI: {fileID: 2306063106458037229}
   player: {fileID: 0}
-  canMove: 0
   pauseAction: {fileID: -3177420910859565254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5142631519314611080
 GameObject:
@@ -9441,6 +9440,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6979196336683530216, guid: f76f84ecf60f0d943b2170c7fd21a4ea, type: 3}
       propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979196336683530216, guid: f76f84ecf60f0d943b2170c7fd21a4ea, type: 3}
+      propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
