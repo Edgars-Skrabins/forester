@@ -50,6 +50,8 @@ public class PlayerFlashlight
 
     public void Update()
     {
+        if(GameManager.Instance.gameState != GameState.Playing) return;
+        
         if (!isOn) return;
         if (currentBattery <= 0f)
         {

@@ -8,7 +8,7 @@ public abstract class Pickable : Interactable
     protected void Start()
     {
         if (rbody == null) { rbody = GetComponent<Rigidbody>(); }
-        if (rbody != null) { rbody.isKinematic = false; }
+        // if (rbody != null) { rbody.isKinematic = false; }
     }
     
     public override void Interact()

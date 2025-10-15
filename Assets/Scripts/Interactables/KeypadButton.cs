@@ -23,8 +23,8 @@ public class KeypadButton : Interactable
     {
         Sequence s = DOTween.Sequence();
         
-        s.Append(transform.DOLocalMoveX(pressedPosition.x, 0.1f).SetEase(Ease.InOutSine));
-        s.Append(transform.DOLocalMove(originalPosition, 0.1f).SetEase(Ease.InOutSine));
+        s.Append(transform.DOLocalMoveZ(pressedPosition.z, 0.1f).SetEase(Ease.InOutSine));
+        s.Append(transform.DOLocalMoveZ(originalPosition.z, 0.1f).SetEase(Ease.InOutSine));
         s.Play();
     }
 }
