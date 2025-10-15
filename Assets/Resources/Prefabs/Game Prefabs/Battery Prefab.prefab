@@ -161,8 +161,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.86, z: -2.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 45.99999, y: 45.99998, z: 46}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3493403320979962059}
   - {fileID: 8492631607045282930}
@@ -181,12 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bec51f4a45d5d44194a96552f6aabc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Battery
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
   outline: {fileID: 6042446041806529895}
   interacted:
     m_PersistentCalls:
       m_Calls: []
-  DestroyOnInteract: 0
-  CallInteracted: 0
 --- !u!54 &4623090193540830830
 Rigidbody:
   m_ObjectHideFlags: 0
