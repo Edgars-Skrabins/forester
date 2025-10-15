@@ -13,6 +13,9 @@ public class PlayerLook
     
     public void Look()
     {
+        if(GameManager.Instance.gameState != GameState.Playing)
+            return;
+        
         Vector2 lookInput = lookAction.action.ReadValue<Vector2>() * sensitivity;
         
         playerTransform.Rotate(Vector3.up * lookInput.x);
