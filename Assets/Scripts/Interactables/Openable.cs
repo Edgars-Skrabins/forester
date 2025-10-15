@@ -13,7 +13,7 @@ public class Openable : Interactable
     [SerializeField] private float animationDuration = 1f;
     [SerializeField] private Ease animationEase = Ease.InOutSine;
 
-    private void Awake()
+    private void Start()
     {
         if(target == null) target = transform;
         closedPosition = !isRotational ? target.localPosition : target.eulerAngles;

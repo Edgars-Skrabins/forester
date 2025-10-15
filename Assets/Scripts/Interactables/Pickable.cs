@@ -2,13 +2,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Pickable : Interactable
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rbody;
     private bool pickeUp;
     
     protected void Start()
     {
-        if (rigidbody == null) { rigidbody = GetComponent<Rigidbody>(); }
-        if (rigidbody != null) { rigidbody.isKinematic = false; }
+        if (rbody == null) { rbody = GetComponent<Rigidbody>(); }
+        if (rbody != null) { rbody.isKinematic = false; }
     }
     
     public override void Interact()
@@ -28,8 +28,8 @@ public abstract class Pickable : Interactable
     
     private void PickUp(Transform parent)
     {
-        if (rigidbody == null) { rigidbody = GetComponent<Rigidbody>(); }
-        if (rigidbody != null) { rigidbody.isKinematic = true; }
+        if (rbody == null) { rbody = GetComponent<Rigidbody>(); }
+        if (rbody != null) { rbody.isKinematic = true; }
         transform.SetParent(parent);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -37,14 +37,11 @@ public abstract class Pickable : Interactable
     
     private void Drop(Transform parent)
     {
-        if (rigidbody == null) { rigidbody = GetComponent<Rigidbody>(); }
+        if (rbody == null) { rbody = GetComponent<Rigidbody>(); }
         
-        float throwForce = 50f;
-        
-        if (rigidbody != null)
+        if (rbody != null)
         {
-            rigidbody.isKinematic = false;
-            // rigidbody.AddForce(transform.position-parent.position * throwForce, ForceMode.Impulse);
+            rbody.isKinematic = false;
         }
         transform.SetParent(null);
     }
