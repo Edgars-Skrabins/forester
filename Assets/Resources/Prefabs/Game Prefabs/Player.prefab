@@ -247,6 +247,7 @@ MonoBehaviour:
     lowBatteryThreshold: 15
     flickerIntensity: 0.2
     flickerSpeed: 0.1
+    flashlightBatteryText: {fileID: 0}
   pickUpParent: {fileID: 4240228925786885334}
 --- !u!1 &3794824356622241741
 GameObject:
@@ -500,6 +501,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: b694b8ec5c41f6247843a2b67222fda6, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b694b8ec5c41f6247843a2b67222fda6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b694b8ec5c41f6247843a2b67222fda6, type: 3}
       propertyPath: m_LocalScale.x

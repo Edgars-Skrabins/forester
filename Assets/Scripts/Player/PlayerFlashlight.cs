@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using TMPro;
 
 [System.Serializable]
 public class PlayerFlashlight
@@ -15,7 +16,8 @@ public class PlayerFlashlight
     [SerializeField] private float lowBatteryThreshold = 15f;
     [SerializeField] private float flickerIntensity = 0.2f;
     [SerializeField] private float flickerSpeed = 0.1f;
-
+    [SerializeField] private TMP_Text flashlightBatteryText;
+    // [SerializeField] private GameObject flashlightIcon;
     private float flashlightStartingIntensity; 
     
     private bool isOn;
@@ -35,6 +37,15 @@ public class PlayerFlashlight
         flashlightStartingIntensity = flashlightLight.intensity;
         toggleAction.action.performed += ctx => ToggleFlashlight();
         rechargeBatteryAction.action.performed += ctx => RechargeFlashlight();
+        UpdateBatteryUI();
+    }
+    
+    private void UpdateBatteryUI()
+    {
+        if (flashlightBatteryText != null)
+        {
+            flashlightBatteryText.text = $"{Mathf.CeilToInt(currentBattery)}%";
+        }
     }
 
     public void Update()
@@ -47,6 +58,7 @@ public class PlayerFlashlight
         }
 
         currentBattery -= drainRate * Time.deltaTime;
+        UpdateBatteryUI();
 
         if (currentBattery <= lowBatteryThreshold)
         {
@@ -59,6 +71,7 @@ public class PlayerFlashlight
             flickerRoutine = null;
             flashlightLight.intensity = 1f;
         }
+
     }
 
     private void ToggleFlashlight()
@@ -79,6 +92,7 @@ public class PlayerFlashlight
         currentBattery = maxBattery;
         flashlightLight.intensity = flashlightStartingIntensity;
         // flashlightLight.enabled = true;
+        UpdateBatteryUI();
     }
 
     private void TurnOn()
@@ -95,6 +109,7 @@ public class PlayerFlashlight
         isOn = false;
         flashlightLight.enabled = false;
         flashlightModel.gameObject.SetActive(false);
+        
         if (flickerRoutine != null)
         {
             coroutineRunner.StopCoroutine(flickerRoutine);
