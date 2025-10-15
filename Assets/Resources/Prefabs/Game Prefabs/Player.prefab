@@ -247,6 +247,7 @@ MonoBehaviour:
     lowBatteryThreshold: 15
     flickerIntensity: 0.2
     flickerSpeed: 0.1
+    flashlightBatteryText: {fileID: 0}
   pickUpParent: {fileID: 4240228925786885334}
 --- !u!1 &3794824356622241741
 GameObject:
