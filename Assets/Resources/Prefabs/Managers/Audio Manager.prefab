@@ -224,7 +224,7 @@ MonoBehaviour:
     loop: 0
     poolSize: 2
   - name: SFX_Door_Close
-    audioClip: {fileID: 8300000, guid: fad1cdd0e8ccdc440ad5f3f6e80a1b6d, type: 3}
+    audioClip: {fileID: 8300000, guid: c988c294564a678458223c5b9597d2ea, type: 3}
     volume: 0.5
     SfxType: 1
     randomizePitch: 1
@@ -233,7 +233,7 @@ MonoBehaviour:
     loop: 0
     poolSize: 2
   - name: SFX_Door_Open
-    audioClip: {fileID: 8300000, guid: 6aa60c27274f8564da5f6cedbbfab8f6, type: 3}
+    audioClip: {fileID: 8300000, guid: be79b9e51680a844caa326ec6b87c2d9, type: 3}
     volume: 0.5
     SfxType: 1
     randomizePitch: 1
