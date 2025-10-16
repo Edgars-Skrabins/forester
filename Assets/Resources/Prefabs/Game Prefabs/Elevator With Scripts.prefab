@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6696114473395144879
 Transform:
   m_ObjectHideFlags: 0
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: Floor Roof Scene
+  targetFloorSceneName: Floor Roof Scene Roof
 --- !u!1 &5274226717960869236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5286226047901013861
 Transform:
   m_ObjectHideFlags: 0
