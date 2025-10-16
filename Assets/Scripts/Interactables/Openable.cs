@@ -16,7 +16,7 @@ public class Openable : Interactable
     private void Start()
     {
         if(target == null) target = transform;
-        closedPosition = !isRotational ? target.localPosition : target.eulerAngles - new Vector3(0, 90, 0);
+        closedPosition = !isRotational ? target.localPosition : target.localRotation.eulerAngles;
         Debug.Log("closedPosition set to: " + closedPosition);
     }
 
