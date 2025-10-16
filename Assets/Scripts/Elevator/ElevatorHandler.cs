@@ -41,6 +41,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     public UnityEvent LeavingFloor;
     
     public bool outsideButtonCanOpen = true;
+    private bool isMovingScenes = false;
     [SerializeField] private int m_currentSelectedFloor = -10;
     public int CurrentSelectedFloor { get { return m_currentSelectedFloor; } set { m_currentSelectedFloor = value; } }
     private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
@@ -105,8 +106,9 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         StartCoroutine(LeaveFloor(nextFloorIndex));
     }
 
-    private IEnumerator LeaveFloor(int nextFloorIndex)
+    private  IEnumerator LeaveFloor(int nextFloorIndex)
     {
+        
         m_currentTargetFloorSceneName = m_buttons[nextFloorIndex].GetComponent<ElevatorButton>().targetFloorSceneName;
         if (m_isPlayerInside)
         {
@@ -121,7 +123,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 Scene scene = SceneManager.GetActiveScene();
                 AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
                 asyncLoad.allowSceneActivation = true;
-
+                isMovingScenes = true;
                 while (!asyncLoad.isDone)
                 {
                     yield return null;
@@ -190,7 +192,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 }
                 break;
             case ElevatorState.LeaveFloor:
-                if (m_floorManager.canLeaveFloor)
+                if (m_floorManager.canLeaveFloor && !isMovingScenes)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }
@@ -232,7 +234,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 }
                 break;
             case ElevatorState.LeaveFloor:
-                if (m_floorManager.canLeaveFloor)
+                if (m_floorManager.canLeaveFloor && !isMovingScenes)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }

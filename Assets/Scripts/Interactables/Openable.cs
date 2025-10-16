@@ -16,7 +16,8 @@ public class Openable : Interactable
     private void Start()
     {
         if(target == null) target = transform;
-        closedPosition = !isRotational ? target.localPosition : target.eulerAngles;
+        closedPosition = !isRotational ? target.localPosition : target.eulerAngles - new Vector3(0, 90, 0);
+        Debug.Log("closedPosition set to: " + closedPosition);
     }
 
     public override void Interact()
@@ -35,7 +36,7 @@ public class Openable : Interactable
     {
         if (isOpen) return;
         isOpen = true;
-        Debug.Log("Opened!");
+        Debug.Log("Opened!" + targetVector);
 
         if (!isRotational)
         {
@@ -43,7 +44,7 @@ public class Openable : Interactable
         }
         else
         {
-            target.DOLocalRotate(targetVector, animationDuration).SetEase(animationEase);
+            target.DOLocalRotate(targetVector, animationDuration, RotateMode.Fast).SetEase(animationEase);
         }
 
         AudioManager.Instance.PlaySound(sfxOpenClipName, transform.position);
@@ -53,7 +54,7 @@ public class Openable : Interactable
     {
         if (!isOpen) return;
         isOpen = false;
-        Debug.Log("Closed!");
+        Debug.Log("Closed! "+closedPosition);
 
         if (!isRotational)
         {
@@ -61,7 +62,7 @@ public class Openable : Interactable
         }
         else
         {
-            target.DOLocalRotate(closedPosition, animationDuration).SetEase(animationEase);
+            target.DOLocalRotate(closedPosition, animationDuration, RotateMode.Fast).SetEase(animationEase);
         }
 
         AudioManager.Instance.PlaySound(sfxCloseClipName, transform.position);

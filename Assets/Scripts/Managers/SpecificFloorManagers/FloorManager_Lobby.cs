@@ -22,17 +22,17 @@ public class FloorManager_Lobby : FloorManager
             case 0:
                 Debug.Log("Event: Open elevator doors 2 seconds after loading the scene.");
                 elevatorHandler.SetState(ElevatorState.Open);
+                elevatorHandler.Control(2f);
                 elevatorHandler.PlayerEnteredElevator.AddListenerOnce(() => { // Condition to move to the next event
-                    EventID = 1; 
-                    ScriptedEvents(EventID); });
-                elevatorHandler.Control(2f);           
+                    ScriptedEvents(EventID+1);
+                });
                 break;
             case 1:
                 Debug.Log("Event Close Elevator Doors and Allow Leaving Floor.");
                 elevatorHandler.SetState(ElevatorState.Close);
                 elevatorHandler.Control();
                 elevatorHandler.SetState(ElevatorState.LeaveFloor);
-                elevatorHandler.CurrentSelectedFloor = 3; // Set to next floor (Officetel)
+                elevatorHandler.CurrentSelectedFloor = 1; // Set to next floor
                 canLeaveFloor = true;
                 break;
             default:
