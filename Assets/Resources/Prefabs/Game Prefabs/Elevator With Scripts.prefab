@@ -571,7 +571,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorFloorsButtonPanelHandler
   m_dontDestroyOnLoad: 1
   _currentState: 3
-  m_floorManager: {fileID: 0}
   m_isPlayerInside: 1
   m_buttonPanel: {fileID: 132839673800390191}
   m_buttons:
@@ -602,7 +601,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   outsideButtonCanOpen: 1
-  m_currentSelectedFloor: 6
+  m_currentSelectedFloor: 1
 --- !u!65 &3673705992172356038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1207,7 +1206,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b013178f24f75c2479d7b1973dc41440, type: 2}
+  - {fileID: 2100000, guid: e0122b0c8a2f1f7488c7d5afb40d22f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
