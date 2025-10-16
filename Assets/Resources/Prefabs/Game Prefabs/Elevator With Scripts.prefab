@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor 2 Scene
 --- !u!1 &2285209451555627393
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor 8 Scene
 --- !u!1 &2442468271009430916
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor 4 Scene
 --- !u!1 &2800748432998224875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor Roof Scene
 --- !u!1 &5274226717960869236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor 7 Scene
 --- !u!1 &5683311718735587924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Floor 1 Scene
 --- !u!1 &5778959078737443544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: Floor Scene - Kupole_A
+  targetFloorSceneName: Floor 3 Scene
 --- !u!1 &6440030292652362787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: Floor Officetel
+  targetFloorSceneName: Floor 6 Scene
 --- !u!1 &7042869954299394830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,7 +2734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: Floor Scene - Kupole_B
+  targetFloorSceneName: Floor 5 Scene
 --- !u!1 &7500107026090795618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,7 +3024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d009a9e0b5c6ba4d953331a026504d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorButton
-  targetFloorSceneName: 
+  targetFloorSceneName: Lobby Scene
 --- !u!1001 &1254850067216878790
 PrefabInstance:
   m_ObjectHideFlags: 0

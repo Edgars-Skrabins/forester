@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -13,13 +13,34 @@ EditorBuildSettings:
     guid: b5a8e8314a0aef64ab9708b304aa6d6e
   - enabled: 1
     path: Assets/Scenes/Game Scenes/Floor 1 Scene.unity
-    guid: ba3fd26d917da1349a9bd29966374bda
-  - enabled: 1
+    guid: 25778679fc39ce547adabeb2ac8d5821
+  - enabled: 0
     path: Assets/Scenes/Example Scenes/Floor Scene - Kupole_A.unity
     guid: 594c8fc5125198144a8ea41aa09f3fc6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Example Scenes/Floor Scene - Kupole_B.unity
     guid: e9c5dd862f238fc479fa5cdad6600e35
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 2 Scene.unity
+    guid: 0664670dd1ab27a4a8548ae0d1a20171
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 3 Scene.unity
+    guid: 4c148f79b587b4e47835ec3b71203c43
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 4 Scene.unity
+    guid: 712c74a7e4e89934cb5e5f75a26d6bd1
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 5 Scene.unity
+    guid: 9e807917599ca5547b830fcc3a2c7f13
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 6 Scene.unity
+    guid: dac1251b481dd094a828caf6e3843a18
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 7 Scene.unity
+    guid: 9af34bac63c97f34183a90f41e8c0a19
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Floor 8 Scene.unity
+    guid: 05ced9473d44b2f43aca984b5af5103d
   - enabled: 1
     path: Assets/Scenes/Game Scenes/Floor Officetel.unity
     guid: cdfde71661d7d30498aeda3422cff77e
