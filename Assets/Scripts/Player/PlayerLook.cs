@@ -8,8 +8,22 @@ public class PlayerLook
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform lookCamTransform;
     [SerializeField] private float sensitivity = 0.5f;
-    
+
     private float xRotation = 0f;
+
+    public void Initialize()
+    {
+        // Load initial sensitivity from PlayerPrefs
+        sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+
+        // Subscribe to mouse sensitivity changes
+        SettingsManager.OnMouseSensitivityChanged += OnMouseSensitivityChanged;
+    }
+
+    private void OnMouseSensitivityChanged(float newSensitivity)
+    {
+        sensitivity = newSensitivity;
+    }
     
     public void Look()
     {

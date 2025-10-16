@@ -15,6 +15,7 @@ public class Player : Singleton<Player>
         playerInteraction?.Initialize();
         playerFootStep?.Initialize();
         playerFlashlight?.Initialize(this);
+        playerLook?.Initialize();
     }
 
     private void Update()
