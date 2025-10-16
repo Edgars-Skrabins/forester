@@ -119,7 +119,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 {
                     AudioManager.Instance.PlaySound("SFX_Elevator_Move", transform.position);
                 }
-                elevatorWaitingTimer += Time.deltaTime;
                 LeavingFloor?.Invoke();
                 //Intermission elevator music
                 Scene scene = SceneManager.GetActiveScene();
@@ -134,6 +133,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
                 while (!asyncUnLoad.isDone || elevatorWaitingTimer < elevatorWaitingTimerGoal)
                 {
+                    elevatorWaitingTimer += Time.deltaTime;
                     yield return null;
                 }
                 try {
@@ -141,13 +141,14 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                     AudioManager.Instance.PlaySound("SFX_Elevator_Stop", transform.position);
                     FloorManager.Instance.SetElevatorReferences();
                     FloorManager.Instance.ScriptedEvents(0);
-                    elevatorWaitingTimer = 0f;
                 }
                 catch
                 {                    
                     Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
                 }
                 isMovingScenes = false;
+                Debug.Log("Transfer between floors took: " + elevatorWaitingTimer + " seconds.");
+                elevatorWaitingTimer = 0f;
             }
 
         }
