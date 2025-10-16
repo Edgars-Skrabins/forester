@@ -3,11 +3,8 @@ using UnityEngine;
 
 public class AutoRotator : MonoBehaviour
 {
-    private float spinSpeed = 50f;
-    
     private void Start()
     {
-        // transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
         Spin();
     }
 

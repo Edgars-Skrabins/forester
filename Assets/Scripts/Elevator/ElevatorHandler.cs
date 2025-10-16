@@ -44,9 +44,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     private bool isMovingScenes = false;
     [SerializeField] private int m_currentSelectedFloor = -10;
     public int CurrentSelectedFloor { get { return m_currentSelectedFloor; } set { m_currentSelectedFloor = value; } }
-    private float m_timeElapsedSinceLastInteraction = 0f; // in seconds
-    private float m_minTimeBetweenInteractions = 0.2f; // in seconds
-    private bool m_canBeInteractedWith = false;
     private string m_currentTargetFloorSceneName;
     
     private void Start()
