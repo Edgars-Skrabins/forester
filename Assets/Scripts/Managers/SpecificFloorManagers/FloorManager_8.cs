@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class FloorManager_Officetel : FloorManager
+public class FloorManager_8 : FloorManager
 {
     Scene scene;
     private IEnumerator WaitOnLoad()

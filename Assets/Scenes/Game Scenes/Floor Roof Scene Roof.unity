@@ -4641,11 +4641,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102509155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7ef8bcee490342b824eee80811298, type: 3}
+  m_Script: {fileID: 11500000, guid: 257e121a8c86cae4d8beb23fd5b66351, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloorManager_Lobby
+  m_EditorClassIdentifier: Assembly-CSharp::FloorManager_Roof
+  m_dontDestroyOnLoad: 0
   ScriptedObjectReferences: []
-  playerHasButton: 0
+  playerHasButton: 1
   canLeaveFloor: 1
 --- !u!1001 &2610617622579593826
 PrefabInstance:

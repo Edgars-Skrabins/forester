@@ -2897,6 +2897,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1140239489646585403, guid: a200da0a40886644198573b4601d7946, type: 3}
   m_PrefabInstance: {fileID: 1454537227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1458185898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.028693795
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03999947
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4414781
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232191150297295322, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352223909022452344, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59da433f9b86dec4bb7ce1703f114d0f, type: 3}
 --- !u!1001 &1511870506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4410,11 +4467,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102509155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7ef8bcee490342b824eee80811298, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cec48f7d28bd91479bf64b22986f6d8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloorManager_Lobby
+  m_EditorClassIdentifier: Assembly-CSharp::FloorManager_4
+  m_dontDestroyOnLoad: 0
   ScriptedObjectReferences: []
-  playerHasButton: 0
+  playerHasButton: 1
   canLeaveFloor: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -4426,3 +4484,4 @@ SceneRoots:
   - {fileID: 1099700817}
   - {fileID: 2102509156}
   - {fileID: 1117983406}
+  - {fileID: 1458185898}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class FloorManager : MonoBehaviour
+public abstract class FloorManager : Singleton<FloorManager>
 {
     [Header("This list contains references to\n\t- Objects\n\t- Interactable Objects\n\n\tused in the scripted sequence\n")]
     [SerializeField] protected List<GameObject> ScriptedObjectReferences;

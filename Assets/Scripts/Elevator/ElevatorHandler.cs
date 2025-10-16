@@ -29,7 +29,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         _currentState = _newState;
     }
     
-    [SerializeField] private FloorManager m_floorManager;
     [SerializeField] private bool m_isPlayerInside = false;
     [SerializeField] private GameObject m_buttonPanel;
     [SerializeField] private List<GameObject> m_buttons;
@@ -52,9 +51,8 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
         try
         {
-            m_floorManager = GameObject.Find("FloorManager").GetComponent<FloorManager>();
-            // m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-            m_floorManager.SetElevatorReferences();
+            // m_outsideButtonPanel = FloorManager.Instance.elevatorOutsidePanel;
+            FloorManager.Instance.SetElevatorReferences();
             Debug.Log("Found floor manager and outside button panel, references set.");
         }
         catch
@@ -62,7 +60,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
             Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
         }
         
-        m_floorManager.ScriptedEvents(0);
+        FloorManager.Instance.ScriptedEvents(0);
     }
     
     private void EventInitializationAndReferenceGrabbing()
@@ -105,7 +103,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
     private  IEnumerator LeaveFloor(int nextFloorIndex)
     {
-        
+        isMovingScenes = true;
         m_currentTargetFloorSceneName = m_buttons[nextFloorIndex].GetComponent<ElevatorButton>().targetFloorSceneName;
         if (m_isPlayerInside)
         {
@@ -120,7 +118,6 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 Scene scene = SceneManager.GetActiveScene();
                 AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_currentTargetFloorSceneName, LoadSceneMode.Additive);
                 asyncLoad.allowSceneActivation = true;
-                isMovingScenes = true;
                 while (!asyncLoad.isDone)
                 {
                     yield return null;
@@ -133,15 +130,15 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                     yield return null;
                 }
                 try { 
-                    m_floorManager = FindFirstObjectByType<FloorManager>();
-                    // m_outsideButtonPanel = m_floorManager.elevatorOutsidePanel;
-                    m_floorManager.SetElevatorReferences();
-                    m_floorManager.ScriptedEvents(0);
+                    // m_outsideButtonPanel = FloorManager.Instance.elevatorOutsidePanel;
+                    FloorManager.Instance.SetElevatorReferences();
+                    FloorManager.Instance.ScriptedEvents(0);
                 }
                 catch
                 {                    
                     Debug.Log("Missing floor manager / outside button panel, don't forget to add them to the scene and add them as references.");
                 }
+                isMovingScenes = false;
             }
 
         }
@@ -176,20 +173,20 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     {
         switch (_currentState){
             case ElevatorState.AddButton:
-                if (m_floorManager.playerHasButton)
+                if (FloorManager.Instance.playerHasButton)
                 {
                     AddButton(param);
                 }
                 break;
             case ElevatorState.AddButtonAndLeave:
-                if (m_floorManager.playerHasButton)
+                if (FloorManager.Instance.playerHasButton && !isMovingScenes)
                 {
                     AddButton(param);
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
             case ElevatorState.LeaveFloor:
-                if (m_floorManager.canLeaveFloor && !isMovingScenes)
+                if (FloorManager.Instance.canLeaveFloor && !isMovingScenes)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }
@@ -218,20 +215,20 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
         switch (_currentState)
         {
             case ElevatorState.AddButton:
-                if (m_floorManager.playerHasButton)
+                if (FloorManager.Instance.playerHasButton)
                 {
                     AddButton(param);
                 }
                 break;
             case ElevatorState.AddButtonAndLeave:
-                if (m_floorManager.playerHasButton)
+                if (FloorManager.Instance.playerHasButton && !isMovingScenes)
                 {
                     AddButton(param);
                     StartCoroutine(LeaveFloor(param));
                 }
                 break;
             case ElevatorState.LeaveFloor:
-                if (m_floorManager.canLeaveFloor && !isMovingScenes)
+                if (FloorManager.Instance.canLeaveFloor && !isMovingScenes)
                 {
                     StartCoroutine(LeaveFloor(param));
                 }
