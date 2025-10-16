@@ -29,7 +29,7 @@ public abstract class FloorManager : Singleton<FloorManager>
         m_currentEventID++;
     }
 
-    private void Start()
+    public virtual void Start()
     {        
         try
         {
