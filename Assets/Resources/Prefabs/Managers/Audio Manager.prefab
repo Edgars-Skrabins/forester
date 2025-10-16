@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375854342745083359}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff8523df87ebfb48a65e8594aaa77f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  m_dontDestroyOnLoad: 0
+  m_dontDestroyOnLoad: 1
   mixer: {fileID: 24100000, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
   masterMixer: {fileID: 24300002, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
   musicMixer: {fileID: -4413013334783167680, guid: f9e27c887cbfe9c448e0fb4e90a6207c, type: 2}
@@ -184,6 +184,24 @@ MonoBehaviour:
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Drawer_Open
+    audioClip: {fileID: 8300000, guid: 9bf0da422602df141aaa8bf7c6e5ab32, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Drawer_Close
+    audioClip: {fileID: 8300000, guid: 47e074980c47b684f9047b610637229a, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.1}
     playOnAwake: 0
     loop: 0
     poolSize: 2
