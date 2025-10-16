@@ -117,7 +117,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
             {
                 if(elevatorWaitingTimer == 0f)
                 {
-                    AudioManager.Instance.PlaySound("SFX_Elevator Move", transform.position);
+                    AudioManager.Instance.PlaySound("SFX_Elevator_Move", transform.position);
                 }
                 elevatorWaitingTimer += Time.deltaTime;
                 LeavingFloor?.Invoke();
@@ -132,13 +132,13 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
                 AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene); 
 
-                while (!asyncUnLoad.isDone && elevatorWaitingTimer < elevatorWaitingTimerGoal)
+                while (!asyncUnLoad.isDone || elevatorWaitingTimer < elevatorWaitingTimerGoal)
                 {
                     yield return null;
                 }
                 try {
                     // m_outsideButtonPanel = FloorManager.Instance.elevatorOutsidePanel;
-                    AudioManager.Instance.PlaySound("SFX_Elevator Stop", transform.position);
+                    AudioManager.Instance.PlaySound("SFX_Elevator_Stop", transform.position);
                     FloorManager.Instance.SetElevatorReferences();
                     FloorManager.Instance.ScriptedEvents(0);
                     elevatorWaitingTimer = 0f;
@@ -176,6 +176,7 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     {
         m_buttons[floorIndex].SetActive(true);
         ElevatorButtonAdded?.Invoke();
+        AudioManager.Instance.PlaySound("SFX_Elevator_Button", transform.position);
     }
 
     public void Control(float delay, int param = 0)

@@ -41,10 +41,12 @@ public class Openable : Interactable
         if (!isRotational)
         {
             target.DOLocalMove(targetVector, animationDuration).SetEase(animationEase);
+            AudioManager.Instance.PlaySound("SFX_Drawer_Open",transform.position);
         }
         else
         {
             target.DOLocalRotate(targetVector, animationDuration, RotateMode.Fast).SetEase(animationEase);
+            AudioManager.Instance.PlaySound("SFX_Door_Open",transform.position);
         }
 
         AudioManager.Instance.PlaySound(sfxOpenClipName, transform.position);
@@ -58,10 +60,12 @@ public class Openable : Interactable
 
         if (!isRotational)
         {
+            AudioManager.Instance.PlaySound("SFX_Drawer_Close",transform.position);
             target.DOLocalMove(closedPosition, animationDuration).SetEase(animationEase);
         }
         else
         {
+            AudioManager.Instance.PlaySound("SFX_Drawer_Close",transform.position);
             target.DOLocalRotate(closedPosition, animationDuration, RotateMode.Fast).SetEase(animationEase);
         }
 

@@ -17,6 +17,7 @@ public class KeypadButton : Interactable
     {
         Animate();
         keypadController.ButtonPressed(buttonValue);
+        AudioManager.Instance.PlaySound("SFX_Button_Press", transform.position);
     }
 
     private void Animate()

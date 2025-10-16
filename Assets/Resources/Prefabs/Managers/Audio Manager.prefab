@@ -160,12 +160,30 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     poolSize: 2
-  - name: SFX_Elevator_Door_Open
+  - name: SFX_Elevator_Move
     audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
     volume: 0.5
     SfxType: 1
     randomizePitch: 0
     randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Stop
+    audioClip: {fileID: 8300000, guid: 50c973bf7baae2246b30429eaf05389a, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.2}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Button
+    audioClip: {fileID: 8300000, guid: c889dc487675ae941a70cc8db7359bea, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.2}
     playOnAwake: 0
     loop: 0
     poolSize: 2
@@ -220,6 +238,42 @@ MonoBehaviour:
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.6, y: 1.2}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Button_Press
+    audioClip: {fileID: 8300000, guid: 2d0ac230ed7dacb408ef2915e59384a0, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.2}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Paper_Pickup
+    audioClip: {fileID: 8300000, guid: b4c65f61f7df5e540abfdab75a770335, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.2}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Paper_Drop
+    audioClip: {fileID: 8300000, guid: a22fbffc31eddd445964368a553d4664, type: 3}
+    volume: 0.284
+    SfxType: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1.2}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
+  - name: SFX_Elevator_Door_Open
+    audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
     playOnAwake: 0
     loop: 0
     poolSize: 2
