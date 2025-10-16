@@ -39,10 +39,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/Floor 7 Scene.unity
     guid: 9af34bac63c97f34183a90f41e8c0a19
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Floor 8 Scene.unity
+    path: Assets/Scenes/Game Scenes/Floor Roof Scene Roof.unity
     guid: 05ced9473d44b2f43aca984b5af5103d
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Floor Officetel.unity
+    path: Assets/Scenes/Game Scenes/Floor 8 Scene.unity
     guid: cdfde71661d7d30498aeda3422cff77e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
