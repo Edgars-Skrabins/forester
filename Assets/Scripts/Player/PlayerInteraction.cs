@@ -59,6 +59,10 @@ public class PlayerInteraction
                         currentInteractable.DisableOutline();
 
                     currentInteractable = hitInteractable;
+                    
+                    if (currentInteractable == null || currentInteractable.Equals(null))
+                        return;
+                    
                     currentInteractable.EnableOutline();
                     interactionDescription.text = currentInteractable.GetInteractionDescription();
                 }

@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bec51f4a45d5d44194a96552f6aabc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Battery
-  DestroyOnInteract: 0
+  DestroyOnInteract: 1
   CallInteracted: 0
   interactionDescription: Interact
   outline: {fileID: 6042446041806529895}

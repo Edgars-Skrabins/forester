@@ -16,30 +16,39 @@ public abstract class Interactable : MonoBehaviour
     {
         if (CallInteracted) { interacted = new UnityEvent(); }
         if (outline == null) { outline = GetComponent<Outline>(); }
-        outline.OutlineMode = Outline.Mode.OutlineVisible;
-        outline.OutlineWidth = 20f;
-        outline.OutlineColor = Color.red;
-        DisableOutline();
+        if (outline != null)
+        {
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+            outline.OutlineWidth = 20f;
+            outline.OutlineColor = Color.red;
+            DisableOutline();
+        }
     }
 
     public virtual void Interact()
     {
-        if(CallInteracted) { interacted?.Invoke(); }
-        if (DestroyOnInteract) { Destroy(this.gameObject, 0.1f);}
+        if (CallInteracted) interacted?.Invoke();
+
+        if (DestroyOnInteract)
+        {
+            DisableOutline(); // disable safely first
+            Destroy(gameObject, 0.1f);
+        }
     }
-    
-    public string GetInteractionDescription()
-    {
-        return interactionDescription;
-    }
-    
+
+    public string GetInteractionDescription() => interactionDescription;
+
     public void EnableOutline()
     {
-        if (outline != null) { outline.enabled = true; }
+        if (outline == null || outline.Equals(null)) return;
+        if (!outline.gameObject || outline.gameObject.Equals(null)) return;
+        if (!outline.enabled) outline.enabled = true;
     }
-    
+
     public void DisableOutline()
     {
-        if (outline != null) { outline.enabled = false; }
+        if (outline == null || outline.Equals(null)) return;
+        if (!outline.gameObject || outline.gameObject.Equals(null)) return;
+        if (outline.enabled) outline.enabled = false;
     }
 }

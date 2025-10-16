@@ -100,8 +100,10 @@ public class Outline : MonoBehaviour {
   }
 
   void OnEnable() {
-    foreach (var renderer in renderers) {
-
+    if (renderers == null) return;
+    foreach (var renderer in renderers)
+    {
+        if (renderer == null || renderer.Equals(null)) continue;
       // Append outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
