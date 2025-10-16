@@ -32,7 +32,7 @@ public class FloorManager_6 : FloorManager
                 Debug.Log("Event Close Elevator Doors and Allow Leaving Floor.");
                 elevatorHandler.SetState(ElevatorState.Close);
                 elevatorHandler.Control();
-                elevatorHandler.SetState(ElevatorState.LeaveFloor);
+                elevatorHandler.SetState(ElevatorState.AddButtonAndLeave);
                 canLeaveFloor = true;
                 break;
             default:

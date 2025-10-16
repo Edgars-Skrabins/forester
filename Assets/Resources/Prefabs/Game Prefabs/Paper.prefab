@@ -167,11 +167,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The glass walls here are supposed \r\nto make use \"feel connected\",
-    but \r\nI swear they breathe when no one's\r\naround.\r\n\r\nSometimes I catch
-    a reflection \r\nthat doesn't move like I do ...\r\nA shape leaning closer. I
-    know it's\r\nstupid, but when the lights flicker,\r\nI almost wish it would step
-    through.\r\n\r\nJust to break the monotony"
+  m_text: "The glass walls here are supposed \r\nto make us \"feel connected\", but
+    \r\nI swear they breathe when no one's\r\naround.\r\n\r\nSometimes I catch a
+    reflection \r\nthat doesn't move like I do ...\r\nA shape leaning closer. I know
+    it's\r\nstupid, but when the lights flicker,\r\nI almost wish it would step through.\r\n\r\nJust
+    to break the monotony"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -304,8 +304,110 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2252073379661631031}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3115741255044057968}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2495846976528587417}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5559618038318933873}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1700293139317469179}
   m_SourcePrefab: {fileID: 100100000, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+--- !u!1 &1156987276411877435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
+  m_PrefabInstance: {fileID: 2075904468760659306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &3115741255044057968
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156987276411877435}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2495846976528587417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156987276411877435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640a0c08eb8e490da8fd8de86f1a2887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableNote
+  DestroyOnInteract: 0
+  CallInteracted: 1
+  interactionDescription: Read
+  outline: {fileID: 0}
+  interacted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &5559618038318933873
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156987276411877435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0734985, y: 0.0000000018626451, z: 2.6391182}
+  m_Center: {x: 0.005072832, y: 0.004784339, z: -0.29570788}
+--- !u!114 &1700293139317469179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156987276411877435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &1965154249840878209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c3cb8daa22744084b973500ffe891f16, type: 3}
