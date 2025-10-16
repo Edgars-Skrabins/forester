@@ -3214,6 +3214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1x1 Corner 2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3145202253173718304, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.834501
+      objectReference: {fileID: 0}
     - target: {fileID: 5171847346428158928, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3258,24 +3262,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392979094790620133, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.834501
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 855847705536657598, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
+    - {fileID: 6951139826910592813, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
+    - {fileID: 5171847346428158928, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
+    - {fileID: 1177839134087742452, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6375236042395759768, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: 774645685}
     - targetCorrespondingSourceObject: {fileID: 6375236042395759768, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
-      insertIndex: 2
+      insertIndex: -1
       addedObject: {fileID: 1136672271}
     - targetCorrespondingSourceObject: {fileID: 6375236042395759768, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
-      insertIndex: 3
+      insertIndex: -1
       addedObject: {fileID: 1665632351}
     - targetCorrespondingSourceObject: {fileID: 6375236042395759768, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
-      insertIndex: 4
+      insertIndex: -1
       addedObject: {fileID: 256694076}
     - targetCorrespondingSourceObject: {fileID: 6375236042395759768, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
-      insertIndex: 5
+      insertIndex: -1
       addedObject: {fileID: 1359446227}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecd66ecb68234fb46bf465fc0e328996, type: 3}
