@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
-{
+{ 
+    public static event System.Action<float> OnMouseSensitivityChanged;
+
     [Header("Settings")]
     [SerializeField] private float masterVolume = 1f;
     [SerializeField] private float musicVolume = 0.7f;
@@ -140,6 +142,8 @@ public class SettingsManager : MonoBehaviour
     {
         mouseSensitivity = value;
         SaveSettings();
+        
+        OnMouseSensitivityChanged?.Invoke(mouseSensitivity);
     }
 
     private void ToggleFullscreen(bool isFullscreen)
