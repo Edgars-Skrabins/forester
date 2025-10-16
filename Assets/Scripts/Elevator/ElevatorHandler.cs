@@ -28,7 +28,9 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
     {
         _currentState = _newState;
     }
-    
+
+    private float elevatorWaitingTimer = 0f;
+    [SerializeField] private float elevatorWaitingTimerGoal = 8f;
     [SerializeField] private bool m_isPlayerInside = false;
     [SerializeField] private GameObject m_buttonPanel;
     [SerializeField] private List<GameObject> m_buttons;
@@ -113,6 +115,11 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
                 StartCoroutine(CloseBeforeLeaving(nextFloorIndex));
             } else
             {
+                if(elevatorWaitingTimer == 0f)
+                {
+                    AudioManager.Instance.PlaySound("SFX_Elevator Move", transform.position);
+                }
+                elevatorWaitingTimer += Time.deltaTime;
                 LeavingFloor?.Invoke();
                 //Intermission elevator music
                 Scene scene = SceneManager.GetActiveScene();
@@ -125,14 +132,16 @@ public class ElevatorHandler : Singleton<ElevatorHandler>
 
                 AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene); 
 
-                while (!asyncUnLoad.isDone)
+                while (!asyncUnLoad.isDone && elevatorWaitingTimer < elevatorWaitingTimerGoal)
                 {
                     yield return null;
                 }
-                try { 
+                try {
                     // m_outsideButtonPanel = FloorManager.Instance.elevatorOutsidePanel;
+                    AudioManager.Instance.PlaySound("SFX_Elevator Stop", transform.position);
                     FloorManager.Instance.SetElevatorReferences();
                     FloorManager.Instance.ScriptedEvents(0);
+                    elevatorWaitingTimer = 0f;
                 }
                 catch
                 {                    
