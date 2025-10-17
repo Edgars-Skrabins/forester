@@ -9,16 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0957382
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8174
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.8011
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.1707
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,5 +67,84 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1010275420950010277}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6652609637553626236}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4961449701818556600}
   m_SourcePrefab: {fileID: 100100000, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+--- !u!1 &331332790260972673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bfa640ed1a36e142942c3ea488e64f7, type: 3}
+  m_PrefabInstance: {fileID: 601310519155786192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1010275420950010277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331332790260972673}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4999999, y: 2.8, z: 0.16638763}
+  m_Center: {x: -0.7429221, y: -0.032146335, z: -0.07779335}
+--- !u!114 &6652609637553626236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331332790260972673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c277fdc102e581249ae011b419f54bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Openable
+  DestroyOnInteract: 0
+  CallInteracted: 0
+  interactionDescription: Interact
+  outline: {fileID: 4961449701818556600}
+  interacted:
+    m_PersistentCalls:
+      m_Calls: []
+  target: {fileID: 0}
+  targetVector: {x: 0, y: 90, z: 0}
+  sfxOpenClipName: 
+  sfxCloseClipName: 
+  isRotational: 1
+  animationDuration: 4
+  animationEase: 4
+--- !u!114 &4961449701818556600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331332790260972673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

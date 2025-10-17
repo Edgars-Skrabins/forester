@@ -12,6 +12,7 @@ public class Unlockable : Openable
         {
             Debug.Log("It's locked. You need a password to unlock it.");
             // Here you could add UI logic to prompt for a password
+            AudioManager.Instance.PlaySound("SFX_Door_Locked", transform.position);
         }
         else
         {
@@ -29,6 +30,7 @@ public class Unlockable : Openable
         }
         else
         {
+            AudioManager.Instance.PlaySound("SFX_Door_Locked", transform.position);
             Debug.Log("Incorrect password.");
         }
     }

@@ -17,7 +17,6 @@ public class Openable : Interactable
     {
         if(target == null) target = transform;
         closedPosition = !isRotational ? target.localPosition : target.localRotation.eulerAngles;
-        Debug.Log("closedPosition set to: " + closedPosition);
     }
 
     public override void Interact()

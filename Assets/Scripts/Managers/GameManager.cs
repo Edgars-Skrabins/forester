@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject player;
 
     [SerializeField] private InputActionReference pauseAction;
+    
     private void Start()
     {
         uiManager.ShowMainMenu();
@@ -40,12 +41,16 @@ public class GameManager : Singleton<GameManager>
         gameState = GameState.Cutscene;
         uiManager.HideAll();
         StartCoroutine(CutsceneCoroutine());
+        AudioManager.Instance.StopSound("BGM_MainMenu");
+        AudioManager.Instance.PlaySound("UISFX_Play");
+        AudioManager.Instance.PlaySound("BGM_Ambience_0");
     }
 
     public void PauseGame()
     {
         if (gameState != GameState.Playing) return;
 
+        AudioManager.Instance.PlaySound("UISFX_Back");
         gameState = GameState.Paused;
         Time.timeScale = 0f;
         uiManager.ShowPauseMenu();

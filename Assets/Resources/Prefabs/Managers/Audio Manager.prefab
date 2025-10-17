@@ -151,6 +151,15 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     poolSize: 2
+  - name: SFX_Elevator_Door_Open
+    audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
+    volume: 0.5
+    SfxType: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.8, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 2
   - name: SFX_Elevator_Door_Close
     audioClip: {fileID: 8300000, guid: 1847b3f7ec68335478b60f21071b6b07, type: 3}
     volume: 0.5
@@ -252,7 +261,7 @@ MonoBehaviour:
     poolSize: 2
   - name: SFX_Paper_Pickup
     audioClip: {fileID: 8300000, guid: b4c65f61f7df5e540abfdab75a770335, type: 3}
-    volume: 0.5
+    volume: 0.086
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.6, y: 1.2}
@@ -261,19 +270,73 @@ MonoBehaviour:
     poolSize: 2
   - name: SFX_Paper_Drop
     audioClip: {fileID: 8300000, guid: a22fbffc31eddd445964368a553d4664, type: 3}
-    volume: 0.284
+    volume: 0.031
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.6, y: 1.2}
     playOnAwake: 0
     loop: 0
     poolSize: 2
-  - name: SFX_Elevator_Door_Open
-    audioClip: {fileID: 8300000, guid: 11b0f537248a9014abd2ed48accfd029, type: 3}
-    volume: 0.5
+  - name: SFX_Door_Locked
+    audioClip: {fileID: 8300000, guid: bf69ccd5ae411d048a151d2d88bf1df1, type: 3}
+    volume: 0.352
     SfxType: 1
-    randomizePitch: 0
-    randomizePitchValues: {x: 0.8, y: 1.1}
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.7, y: 1.1}
     playOnAwake: 0
     loop: 0
-    poolSize: 2
+    poolSize: 5
+  - name: BGM_MainMenu
+    audioClip: {fileID: 8300000, guid: 6d8a52368b593ec46b1bdf00d162b2d7, type: 3}
+    volume: 0.235
+    SfxType: 0
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: BGM_Ambience_0
+    audioClip: {fileID: 8300000, guid: 94cfc426aaafd38418716411d7dcd57e, type: 3}
+    volume: 0.086
+    SfxType: 3
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: UISFX_Hover
+    audioClip: {fileID: 8300000, guid: 8c32c050c36e9754c9fe4d0dd6f091a5, type: 3}
+    volume: 0.235
+    SfxType: 2
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: UISFX_Back
+    audioClip: {fileID: 8300000, guid: 4798d97f46905244bbd47547ae335965, type: 3}
+    volume: 0.13
+    SfxType: 2
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: UISFX_Select
+    audioClip: {fileID: 8300000, guid: 85b809ab40e4fc34497070065f5c61e7, type: 3}
+    volume: 0.21
+    SfxType: 2
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: UISFX_Play
+    audioClip: {fileID: 8300000, guid: 3f73423fd24820548a52ea78e0e228c3, type: 3}
+    volume: 0.235
+    SfxType: 2
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1

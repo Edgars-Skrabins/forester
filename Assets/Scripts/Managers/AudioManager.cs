@@ -77,6 +77,10 @@ public class AudioManager : Singleton<AudioManager>
                     default: newAudioSource.outputAudioMixerGroup = sfxMixer; break;
                 }
 
+                if (sfx.SfxType == SFXType.UISFX)
+                {
+                    newAudioSource.bypassReverbZones = true;
+                }
                 pool.Add(newAudioSource);
             }
 
@@ -125,7 +129,10 @@ public class AudioManager : Singleton<AudioManager>
             case SFXType.Ambience: newAudioSource.outputAudioMixerGroup = ambienceMixer; break;
             default: newAudioSource.outputAudioMixerGroup = sfxMixer; break;
         }
-
+        if (sfx.SfxType == SFXType.UISFX)
+        {
+            newAudioSource.bypassReverbZones = true;
+        }
         // Add to pool
         pool.Add(newAudioSource);
 
