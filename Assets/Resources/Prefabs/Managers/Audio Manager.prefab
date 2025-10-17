@@ -215,8 +215,8 @@ MonoBehaviour:
     loop: 0
     poolSize: 2
   - name: SFX_Drawer_Open
-    audioClip: {fileID: 8300000, guid: 9bf0da422602df141aaa8bf7c6e5ab32, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: d7a5fa2c5e19f0a48a68bec057cf9a68, type: 3}
+    volume: 0.21
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.6, y: 1.1}
@@ -224,8 +224,8 @@ MonoBehaviour:
     loop: 0
     poolSize: 2
   - name: SFX_Drawer_Close
-    audioClip: {fileID: 8300000, guid: 47e074980c47b684f9047b610637229a, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 549f0da42b6aa0b48b8acd93837d0de6, type: 3}
+    volume: 0.222
     SfxType: 1
     randomizePitch: 1
     randomizePitchValues: {x: 0.6, y: 1.1}

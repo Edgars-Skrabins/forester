@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     public GameState gameState = GameState.Menu;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private GameObject player;
-
+    [SerializeField] private GameObject titleCam;
     [SerializeField] private InputActionReference pauseAction;
     
     private void Start()
@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
+        titleCam.SetActive(false);
         gameState = GameState.Cutscene;
         uiManager.HideAll();
         StartCoroutine(CutsceneCoroutine());
