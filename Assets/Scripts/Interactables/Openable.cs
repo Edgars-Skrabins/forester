@@ -64,7 +64,7 @@ public class Openable : Interactable
         }
         else
         {
-            AudioManager.Instance.PlaySound("SFX_Drawer_Close",transform.position);
+            AudioManager.Instance.PlaySound("SFX_Door_Close",transform.position);
             target.DOLocalRotate(closedPosition, animationDuration, RotateMode.Fast).SetEase(animationEase);
         }
 

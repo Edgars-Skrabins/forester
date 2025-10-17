@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6053619805793631013}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6773254, y: 0, z: 0, w: 0.73568356}
-  m_LocalPosition: {x: -0, y: 0.048, z: -0.015}
+  m_LocalPosition: {x: -0, y: 0.119, z: -0.015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,8 +47,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 129.82143
+  m_Range: 472.7
+  m_SpotAngle: 160.10004
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -238,9 +238,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e9112a836ebaa4291e477b44f3e321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightController
+  useLight: 1
+  useMaterial: 1
   targetLight: {fileID: 2919532828768863621}
-  minIntensity: 0.2
-  maxIntensity: 1
+  minIntensity: 0
+  maxIntensity: 2
+  targetRenderer: {fileID: 1703441983982468211}
+  emissionProperty: _EmissionColor
+  baseEmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  minEmissionIntensity: 0.2
+  maxEmissionIntensity: 1
   minFlickerInterval: 0.05
   maxFlickerInterval: 0.2
   buzzAudio: {fileID: 4802601317946528136}
@@ -316,5 +323,10 @@ PrefabInstance:
 --- !u!4 &569982056715323164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2309560e1ceab04eaf6d1af77886abb, type: 3}
+  m_PrefabInstance: {fileID: 27658027567964407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1703441983982468211 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a2309560e1ceab04eaf6d1af77886abb, type: 3}
   m_PrefabInstance: {fileID: 27658027567964407}
   m_PrefabAsset: {fileID: 0}

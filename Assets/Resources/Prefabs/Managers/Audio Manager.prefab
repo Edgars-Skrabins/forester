@@ -288,12 +288,12 @@ MonoBehaviour:
     poolSize: 5
   - name: BGM_MainMenu
     audioClip: {fileID: 8300000, guid: 6d8a52368b593ec46b1bdf00d162b2d7, type: 3}
-    volume: 0.235
+    volume: 0.099
     SfxType: 0
     randomizePitch: 0
     randomizePitchValues: {x: 0.7, y: 1.1}
     playOnAwake: 0
-    loop: 0
+    loop: 1
     poolSize: 1
   - name: BGM_Ambience_0
     audioClip: {fileID: 8300000, guid: 94cfc426aaafd38418716411d7dcd57e, type: 3}
@@ -302,7 +302,7 @@ MonoBehaviour:
     randomizePitch: 0
     randomizePitchValues: {x: 0.7, y: 1.1}
     playOnAwake: 0
-    loop: 0
+    loop: 1
     poolSize: 1
   - name: UISFX_Hover
     audioClip: {fileID: 8300000, guid: 8c32c050c36e9754c9fe4d0dd6f091a5, type: 3}
@@ -332,9 +332,18 @@ MonoBehaviour:
     loop: 0
     poolSize: 1
   - name: UISFX_Play
-    audioClip: {fileID: 8300000, guid: 3f73423fd24820548a52ea78e0e228c3, type: 3}
-    volume: 0.235
+    audioClip: {fileID: 8300000, guid: 86b81d8a99291884094581ef03edf10b, type: 3}
+    volume: 0.691
     SfxType: 2
+    randomizePitch: 0
+    randomizePitchValues: {x: 0.7, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+    poolSize: 1
+  - name: BGM_Lobby
+    audioClip: {fileID: 8300000, guid: 01969b1d2ab768f41ad28bc2de06544d, type: 3}
+    volume: 0.204
+    SfxType: 0
     randomizePitch: 0
     randomizePitchValues: {x: 0.7, y: 1.1}
     playOnAwake: 0

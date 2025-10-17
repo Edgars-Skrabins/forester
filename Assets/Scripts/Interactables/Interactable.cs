@@ -14,7 +14,6 @@ public abstract class Interactable : MonoBehaviour
     
     protected virtual void Awake()
     {
-        if (CallInteracted) { interacted = new UnityEvent(); }
         if (outline == null) { outline = GetComponent<Outline>(); }
         if (outline != null)
         {
@@ -27,13 +26,23 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        if (CallInteracted) interacted?.Invoke();
+        if (CallInteracted)
+        {
+            interacted?.Invoke();
+            Debug.Log("Interacted");
+        }
 
         if (DestroyOnInteract)
         {
-            DisableOutline(); // disable safely first
-            Destroy(gameObject, 0.1f);
+            Invoke(nameof(DisableGameObject), 0.1f);
         }
+    }
+    
+    private void DisableGameObject()
+    {
+        interactionDescription = "";
+        DisableOutline(); // disable safely first
+        gameObject.SetActive(false);
     }
 
     public string GetInteractionDescription() => interactionDescription;

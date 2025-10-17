@@ -4,10 +4,21 @@ using DG.Tweening;
 [RequireComponent(typeof(AudioSource))]
 public class LightController : MonoBehaviour
 {
+    [Header("Mode")]
+    public bool useLight = true;
+    public bool useMaterial = false;
+
     [Header("Light Settings")]
     public Light targetLight;
     public float minIntensity = 0.2f;
     public float maxIntensity = 1.0f;
+
+    [Header("Material Settings")]
+    public MeshRenderer targetRenderer;
+    public string emissionProperty = "_EmissionColor";
+    public Color baseEmissionColor = Color.white;
+    public float minEmissionIntensity = 0.2f;
+    public float maxEmissionIntensity = 1.0f;
 
     [Header("Flicker Timing")]
     public float minFlickerInterval = 0.05f;
@@ -25,11 +36,16 @@ public class LightController : MonoBehaviour
 
     private float nextFlickerTime;
     private float targetIntensity;
+    private Material targetMaterial;
+    private Color currentEmissionColor;
 
     void Start()
     {
-        if (!targetLight)
+        if (useLight && !targetLight)
             targetLight = GetComponent<Light>();
+
+        if (useMaterial && targetRenderer)
+            targetMaterial = targetRenderer.material;
 
         if (buzzAudio)
         {
@@ -54,16 +70,41 @@ public class LightController : MonoBehaviour
     {
         targetIntensity = Random.Range(minIntensity, maxIntensity);
 
-        if (useDoTween)
+        // ---- Light flicker ----
+        if (useLight && targetLight)
         {
-            targetLight.DOIntensity(targetIntensity, tweenDuration)
-                .SetEase(tweenEase);
-        }
-        else
-        {
-            targetLight.intensity = targetIntensity;
+            if (useDoTween)
+                targetLight.DOIntensity(targetIntensity, tweenDuration).SetEase(tweenEase);
+            else
+                targetLight.intensity = targetIntensity;
         }
 
+        // ---- Material flicker ----
+        if (useMaterial && targetMaterial)
+        {
+            float emissionIntensity = Random.Range(minEmissionIntensity, maxEmissionIntensity);
+            Color newEmission = baseEmissionColor * Mathf.LinearToGammaSpace(emissionIntensity);
+
+            if (useDoTween)
+            {
+                DOTween.To(
+                    () => currentEmissionColor,
+                    c => {
+                        currentEmissionColor = c;
+                        targetMaterial.SetColor(emissionProperty, currentEmissionColor);
+                    },
+                    newEmission,
+                    tweenDuration
+                ).SetEase(tweenEase);
+            }
+            else
+            {
+                currentEmissionColor = newEmission;
+                targetMaterial.SetColor(emissionProperty, currentEmissionColor);
+            }
+        }
+
+        // ---- Buzz pitch variation ----
         if (buzzAudio)
         {
             float pitch = 1f + Random.Range(-buzzPitchVariance, buzzPitchVariance);

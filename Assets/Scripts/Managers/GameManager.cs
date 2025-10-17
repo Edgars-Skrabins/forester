@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
     
     private void Start()
     {
+        AudioManager.Instance.PlaySound("BGM_MainMenu");
+        AudioManager.Instance.PlaySound("BGM_Ambience_0");
         uiManager.ShowMainMenu();
     }
 
@@ -42,9 +44,8 @@ public class GameManager : Singleton<GameManager>
         gameState = GameState.Cutscene;
         uiManager.HideAll();
         StartCoroutine(CutsceneCoroutine());
-        AudioManager.Instance.StopSound("BGM_MainMenu");
         AudioManager.Instance.PlaySound("UISFX_Play");
-        AudioManager.Instance.PlaySound("BGM_Ambience_0");
+        AudioManager.Instance.StopSound("BGM_MainMenu");
     }
 
     public void PauseGame()
@@ -64,6 +65,7 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Paused) return;
 
         gameState = GameState.Playing;
+        AudioManager.Instance.PlaySound("UISFX_Play");
         Time.timeScale = 1f;
         uiManager.ShowHUD();
         Cursor.lockState = CursorLockMode.Locked;

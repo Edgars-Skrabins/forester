@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5352223909022452344
+--- !u!1 &591229530147770068
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1232191150297295322}
-  - component: {fileID: 6717121232164680446}
-  - component: {fileID: 2438137548773325751}
-  - component: {fileID: 5879609034421331596}
-  - component: {fileID: 8868385397685123102}
-  - component: {fileID: 5030496447618752494}
+  - component: {fileID: 1271729717175597068}
+  - component: {fileID: 7030782539463244482}
+  - component: {fileID: 3237681581144316109}
+  - component: {fileID: 702267953147410577}
   m_Layer: 0
-  m_Name: Button
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1232191150297295322
+--- !u!4 &1271729717175597068
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352223909022452344}
+  m_GameObject: {fileID: 591229530147770068}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
+  m_LocalPosition: {x: 0.0193, y: -0.0141, z: 0.0047}
+  m_LocalScale: {x: 1.81, y: 1.81, z: 1.81}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1232191150297295322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6717121232164680446
+--- !u!33 &7030782539463244482
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352223909022452344}
+  m_GameObject: {fileID: 591229530147770068}
   m_Mesh: {fileID: 5711992751416541319, guid: 547c2469200f9e94c8a4330243428dc4, type: 3}
---- !u!23 &2438137548773325751
+--- !u!23 &3237681581144316109
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352223909022452344}
+  m_GameObject: {fileID: 591229530147770068}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,6 +90,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &702267953147410577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591229530147770068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.5325537, g: 0.6792453, b: 0.41972235, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!1 &5352223909022452344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232191150297295322}
+  - component: {fileID: 5879609034421331596}
+  - component: {fileID: 5030496447618752494}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232191150297295322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352223909022452344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1271729717175597068}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5879609034421331596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,24 +163,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04998207, y: 0.041788757, z: 0.008011579}
   m_Center: {x: -0.019820213, y: 0.018532002, z: -0.01328847}
---- !u!114 &8868385397685123102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352223909022452344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 0.5325537, g: 0.6792453, b: 0.41972235, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &5030496447618752494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +178,7 @@ MonoBehaviour:
   DestroyOnInteract: 1
   CallInteracted: 1
   interactionDescription: Take Button
-  outline: {fileID: 0}
+  outline: {fileID: 702267953147410577}
   interacted:
     m_PersistentCalls:
       m_Calls: []
