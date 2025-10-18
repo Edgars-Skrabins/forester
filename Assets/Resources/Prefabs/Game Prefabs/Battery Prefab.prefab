@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 100897243035118671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.025, y: 0.005595, z: 0.025}
+  m_LocalPosition: {x: -0.0000025751, y: 0.17328, z: 0.00000013877}
+  m_LocalScale: {x: 0.043318722, y: 0.009694729, z: 0.043318722}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833355562718364585}
@@ -142,7 +142,7 @@ MonoBehaviour:
   DestroyOnInteract: 1
   CallInteracted: 0
   interactionDescription: Interact
-  outline: {fileID: 0}
+  outline: {fileID: 1289096290495569444}
   interacted:
     m_PersistentCalls:
       m_Calls: []
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 5289484577201600355}
   - component: {fileID: 7030189727319712480}
   - component: {fileID: 3543534985924360738}
+  - component: {fileID: 1289096290495569444}
   m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
@@ -222,8 +223,8 @@ Transform:
   m_GameObject: {fileID: 4759863249088822994}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: -0.0000025478, y: 0.0000058082, z: -0.00000040735}
+  m_LocalScale: {x: 0.15594739, y: 0.16461113, z: 0.15594739}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833355562718364585}
@@ -243,7 +244,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4759863249088822994}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -303,10 +304,28 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000005
+  m_Radius: 0.6
   m_Height: 2.0000002
   m_Direction: 1
   m_Center: {x: 0.00000041723274, y: 0.00000017881389, z: 0.000001817942}
+--- !u!114 &1289096290495569444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759863249088822994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6550933717758316055
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,8 +353,8 @@ Transform:
   m_GameObject: {fileID: 6550933717758316055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06292, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.037108634, z: 0.1}
+  m_LocalPosition: {x: -0.00000023445, y: 0.10903, z: 0.00000042235}
+  m_LocalScale: {x: 0.17327489, y: 0.06429993, z: 0.17327489}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833355562718364585}
@@ -423,8 +442,8 @@ Transform:
   m_GameObject: {fileID: 8714478007067004483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0362, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.06385595, z: 0.1}
+  m_LocalPosition: {x: -0.0000025844, y: -0.062719, z: -0.00000011082}
+  m_LocalScale: {x: 0.17327489, y: 0.110646315, z: 0.17327489}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833355562718364585}

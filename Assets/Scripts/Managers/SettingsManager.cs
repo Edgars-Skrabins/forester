@@ -77,7 +77,7 @@ public class SettingsManager : MonoBehaviour
         musicVolume = PlayerPrefs.GetFloat("AmbienceVolume", 0.7f);
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0.7f);
         uiVolume = PlayerPrefs.GetFloat("UIVolume", 0.7f);
-        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", .5f);
         fullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
     }
 
@@ -88,7 +88,7 @@ public class SettingsManager : MonoBehaviour
         SetMixerVolume("SFXVolume", sfxVolume);
         SetMixerVolume("AmbienceVolume", ambienceVolume);
         SetMixerVolume("UIVolume", uiVolume);
-
+        
         Screen.fullScreen = fullscreen;
     }
 
@@ -141,9 +141,10 @@ public class SettingsManager : MonoBehaviour
     private void SetMouseSensitivity(float value)
     {
         mouseSensitivity = value;
-        SaveSettings();
         
         OnMouseSensitivityChanged?.Invoke(mouseSensitivity);
+        
+        SaveSettings();
     }
 
     private void ToggleFullscreen(bool isFullscreen)

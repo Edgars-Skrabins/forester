@@ -46,6 +46,8 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(CutsceneCoroutine());
         AudioManager.Instance.PlaySound("UISFX_Play");
         AudioManager.Instance.StopSound("BGM_MainMenu");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void PauseGame()
@@ -80,10 +82,14 @@ public class GameManager : Singleton<GameManager>
         gameState = GameState.Playing;
         uiManager.ShowHUD();
         player.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
+    public UIManager GetUIManager()
+    {
+        return uiManager;
+    }
+    
     public void QuitApplication()
     {
         Application.Quit();

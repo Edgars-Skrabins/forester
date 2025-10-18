@@ -33,6 +33,7 @@ public abstract class Pickable : Interactable
         transform.SetParent(parent);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        GameManager.Instance.GetUIManager().HideAll();
         AudioManager.Instance.PlaySound("SFX_Paper_Pickup",transform.position);
     }
     
@@ -45,6 +46,7 @@ public abstract class Pickable : Interactable
             rbody.isKinematic = false;
         }
         transform.SetParent(null);
+        GameManager.Instance.GetUIManager().ShowHUD();
         AudioManager.Instance.PlaySound("SFX_Paper_Drop",transform.position);
     }
 }
